@@ -47,7 +47,8 @@ body {
 
 .dreta {
   width: 38.2%;
-  /* background-color: rgba(181, 158, 114, 0.2); */
+  background: url(../img/textura.jpg) repeat;
+  filter: drop-shadow(3px 3px 3px rgb(0 0 0 / 0.3));
 }
 
 h1 {
@@ -88,40 +89,29 @@ article {
   padding: 2.5vw;
   font-style: italic;
   line-height: 1.4;
-  /* text-shadow: 0 0.1em 0.1em white; */
-  background: url(../img/textura.jpg) repeat;
-  /* background-color: rgba(181, 158, 114, 0.2); */
-  filter: drop-shadow(3px 3px 3px rgb(0 0 0 / 0.3));
 }
 
 @media (orientation: portrait) {
-
   body {
     height: 100%;
   }
-
   .container {
     flex-direction: column;
   }
-
-  .esquerra,
-  .dreta {
+  .esquerra, .dreta {
     width: 100%;
     margin-bottom: 2vw;
     min-height: 100%;
   }
-
   article {
     font-size: 4vw;
   }
-
   .groc::before {
     width: 9vw;
     height: 14.562vw;
     top: -3vw;
     right: 9vw;
   }
-
   .groc {
     padding: 10vw;
   }

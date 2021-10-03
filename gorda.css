@@ -1,5 +1,4 @@
 @charset "UTF-8";
-
 @font-face {
     font-family: 'Mrs Eaves OT';
     src: url('MrsEavesOT-Roman.woff') format('woff');
@@ -16,8 +15,7 @@
     box-sizing: border-box;
 }
 
-html,
-body {
+html, body {
     height: 100%;
 }
 
@@ -27,7 +25,7 @@ html {
 
 body {
     background: url(paper.png) repeat;
-    background-size: 60% 60%;
+    /* background-size: 60% 60%; */
     color: #333;
     font-family: 'Mrs Eaves OT', serif;
     font-variant-ligatures: common-ligatures discretionary-ligatures;
@@ -45,9 +43,7 @@ body {
     counter-reset: section;
 }
 
-.cap,
-.embolcall,
-.peu {
+.cap, .embolcall, .peu {
     width: 90%;
     margin: 0 auto;
 }
@@ -56,10 +52,10 @@ body {
     position: absolute;
     background-size: 100% 100%;
     content: '';
-    width: 10vw;
+    width: 6vw;
     height: 9.708vw;
     top: 0;
-    left: 8vw;
+    left: 10vw;
     background-image: url(fdl.svg);
     filter: drop-shadow(0.15vw 0.3vw 0.3vw rgb(0 0 0 / 0.2));
 }
@@ -72,8 +68,7 @@ body {
     line-height: 1;
 }
 
-.cap,
-.peu {
+.cap, .peu {
     padding: 2vw 0;
 }
 
@@ -106,15 +101,20 @@ body {
     width: 61.8%;
 }
 
+.cos {
+    width: 38.2%;
+}
+
 .marge img {
     width: 100%;
     height: auto;
     -webkit-filter: drop-shadow(0 1px 0 white);
     filter: drop-shadow(0 1px 0 white);
-}
-
-.cos {
-    width: 38.2%;
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+    user-drag: none;
 }
 
 p::before {
@@ -140,17 +140,47 @@ p:last-child {
 
 span.groc {
     color: rgb(181, 158, 114);
-    font-size: 130%;
 }
 
-@media only screen and (-webkit-min-device-pixel-ratio: 2),
-only screen and (min--moz-device-pixel-ratio: 2),
-only screen and (-o-min-device-pixel-ratio: 2/1),
-only screen and (min-device-pixel-ratio: 2),
-only screen and (min-resolution: 192dpi),
-only screen and (min-resolution: 2dppx) {
+@media (orientation: portrait) {
+    body {
+        font-size: 3.8vw;
+    }
+    .cap {
+        padding: 2vh 0 6vh 0;
+    }
+    .peu {
+        padding: 6vh 0 2vh 0;
+    }
+    .cap {
+        font-size: 200%;
+    }
+    .embolcall {
+        display: flex;
+        flex-direction: column-reverse;
+        row-gap: 5vh;
+    }
+    .cap::before {
+        width: 8vh;
+        height: 12.94vh;
+    }
+    .marge, .cos {
+        width: 100%;
+    }
+    p::before {
+        display: none;
+    }
+    /*
+    .farciment {  
+        flex: 1 0 auto; 
+    }
+    */
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
     body {
         background: url('paper_@2X.png') repeat;
-        background-size: 30% 30%;
+        /* background-size: 30% 30%; */
+        background-size: 50% 50%;
     }
 }

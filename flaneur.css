@@ -170,17 +170,11 @@ span.groc {
     p::before {
         display: none;
     }
-    /*
-    .farciment {  
-        flex: 1 0 auto; 
-    }
-    */
 }
 
 @media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
     body {
         background: url('paper_@2X.png') repeat;
-        /* background-size: 30% 30%; */
         background-size: 50% 50%;
     }
 }

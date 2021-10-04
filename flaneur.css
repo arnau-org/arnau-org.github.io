@@ -27,7 +27,6 @@ html {
 
 body {
     background: url(paper.png) repeat;
-    /* background-size: 60% 60%; */
     color: #333;
     font-family: 'MrsEavesOT-Roman', serif;
     font-variant-ligatures: common-ligatures discretionary-ligatures;
@@ -178,3 +177,4 @@ span.groc {
         background-size: 50% 50%;
     }
 }
+

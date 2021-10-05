@@ -26,6 +26,7 @@ html {
 
 body {
     background: url(paper.png) repeat;
+    background-size: 500px 593px;
     color: #333;
     font-family: 'Mrs Eaves OT', serif;
     font-variant-ligatures: common-ligatures discretionary-ligatures;
@@ -170,10 +171,9 @@ span.groc {
     }
 }
 
-@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
+@media (min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
     body {
         background: url('paper_@2X.png') repeat;
-        /* background-size: 50% 50%; */
     }
 }
 

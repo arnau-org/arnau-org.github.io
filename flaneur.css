@@ -58,7 +58,7 @@ body {
     top: 0;
     left: 10vw;
     background-image: url('l.svg');
-    filter: drop-shadow(0.15vw 0.3vw 0.3vw rgb(0 0 0 / 0.2));
+    filter: drop-shadow(0.1vw 0.2vw 0.2vw rgb(0 0 0 / 0.4));
 }
 
 .cap {

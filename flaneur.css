@@ -171,7 +171,7 @@ span.groc {
     }
 }
 
-@media (min-device-pixel-ratio: 2) and (min-width: 360px), (min-resolution: 192dpi) and (min-width: 360px) {
+@media (min-device-pixel-ratio: 2) {
     body {
         background: url('paper_@2X.png') repeat;
     }

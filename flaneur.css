@@ -142,7 +142,7 @@ span.groc {
 
 @media (orientation: portrait) {
     body {
-        font-size: 3.8vw;
+        font-size: 4vw;
     }
     .cap {
         padding: 2vh 0 6vh 0;
@@ -171,7 +171,7 @@ span.groc {
     }
 }
 
-@media (min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+@media (min-device-pixel-ratio: 1.5), (min-resolution: 144dpi) {
     body {
         background: url('paper_@2X.png') repeat;
     }

@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="ca">
+
+<head>
+  <meta charset="utf-8">
+  <title>Arnau.org</title>
+  <meta name="description" content="El portal web del domini arnau.org">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="preload" href="monstre/tipus.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="monstre/copa.svg" as="image" type="image/svg+xml">
+  <link rel="preload" href="monstre/lis.svg" as="image" type="image/svg+xml">
+  <link rel="preload" href="monstre/paper.png" as="image" media="(min-device-pixel-ratio: 1)">
+  <link rel="preload" href="monstre/paper_@2X.png" as="image" media="(min-device-pixel-ratio: 2)">
+  <link rel="preload" href="monstre/monstre.css" as="style">
+  
+  <link rel="stylesheet" href="monstre/monstre.css">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+
+  <!-- 
+    *****************************************
+    Per a més endavant, que ara estic mandrós
+    *****************************************
+
+  <meta property="og:title" content="">
+  <meta property="og:type" content="">
+  <meta property="og:url" content="">
+  <meta property="og:image" content="">
+  -->
+</head>
+
+<body>
+  <div class="embolcall">
+    <!-- portada -->
+    <div class="portada">
+      <div class="farciment"></div>
+      <div class="cap">
+        <svg class="figura" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 401 393"></svg>
+      </div>
+      <h1>CARTA<br>AL VISITANT<br>DESCONEGUT</h1>
+
+      <div class="farciment"></div>
+      <h4>MMXXI</h4>
+      <div class="farciment"></div>
+      <div class="peu">Copyright © Arnau.org, <span id="any"></span></div>
+    </div>
+    <!-- Full -->
+    <div class="full">
+      <div class="cap">
+        <h2>La Carta</h2>
+        <h3>Algun lloc de Catalunya,<br><span>14</span> d'octubre de <span>2021</span></h3>
+      </div>
+      <div class="farciment"></div>
+      <div class="cos">
+        <p>Benvolgut visitant,<br>
+          Imagino que has arribat fins aquí portat per la curiositat de saber què o qui s'amaga darrere
+          d'aquest web. D'això te n'informaré més endavant, però ara permet-me prendre'm alguna
+          llicència.</p>
+        <p>El teu nom és desconegut, això és un fet. L'epitafi de la Tomba al Soldat Desconegut que hi ha davant del
+          mur del Kremlin, a Moscou, comença de la mateixa manera: “El teu nom és desconegut, la teva gesta és
+          immortal”. Sí que et puc garantir, visitant, que la teva arribada fins aquí no suposarà cap gesta que mereixi
+          ser recordada. Això també és un fet.</p>
+        <p>Bé, tornant al motiu de la visita i per a satisfer la teva curiositat et diré que arnau.org pertany a una
+          família, el cognom de la qual coincideix amb el nom del domini, sense l’extensió &mdash;no cal dir-ho&mdash;.
+          Els membres
+          d'aquesta família utilitzen el servei de correu electrònic vinculat al domini, per a comunicar-se entre
+          ells i amb la resta del món.</p>
+        <p>Cal que entenguis aquest web com un gest de cortesia cap tu i cap a la teva curiositat.</p>
+        <p>Que gaudeixis d'un molt bon dia,</p>
+        AA
+
+      </div>
+      <div class="farciment"></div>
+      <div class="peu">&mdash; Pàgina única &mdash;</div>
+
+    </div>
+  </div>
+
+  <script>
+    document.getElementById("any").innerHTML = new Date().getFullYear();
+  </script>
+</body>
+
+</html>

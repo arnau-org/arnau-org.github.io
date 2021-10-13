@@ -6,26 +6,18 @@
   <title>Arnau.org</title>
   <meta name="description" content="El portal web del domini arnau.org">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="preload" href="monstre/tipus.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="monstre/copa.svg" as="image" type="image/svg+xml">
-  <link rel="preload" href="monstre/lis.svg" as="image" type="image/svg+xml">
-  <link rel="preload" href="monstre/paper.png" as="image" media="(min-device-pixel-ratio: 1)">
-  <link rel="preload" href="monstre/paper_@2X.png" as="image" media="(min-device-pixel-ratio: 2)">
-  <link rel="preload" href="monstre/monstre.css" as="style">
+  <link rel="preload" href="copa/carta.css" as="style">
 
-  <link rel="stylesheet" href="monstre/monstre.css">
+  <link rel="stylesheet" href="copa/carta.css">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
 
-  <!-- 
-    *****************************************
-    Per a més endavant, que ara estic mandrós
-    *****************************************
+  <meta property="og:site_name" content="Arnau.org">
+  <meta property="og:title" content="El portal web del domini arnau.org · Carta al Visitant Desconegut">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://arnau.org">
+  <meta property="og:image" content="copa/imatge.png">
 
-  <meta property="og:title" content="">
-  <meta property="og:type" content="">
-  <meta property="og:url" content="">
-  <meta property="og:image" content="">
-  -->
+
 </head>
 
 <body>
@@ -66,7 +58,8 @@
           família, el cognom de la qual coincideix amb el nom del domini, sense l’extensió <span>—no</span> cal
           <span>dir-ho—.</span> Els membres
           d'aquesta família utilitzen el servei de correu electrònic vinculat al domini, per a comunicar-se entre ells i
-          amb la resta del món.</p>
+          amb la resta del món.
+        </p>
 
         <p>Cal que entenguis aquest web com un gest de cortesia cap tu i cap a la teva curiositat.</p>
 
@@ -75,13 +68,17 @@
 
       </div>
       <div class="farciment"></div>
-      <div class="peu">&mdash; Pàgina única &mdash;</div>
+      <div class="peu">
+        <span class="pag">&mdash; Pàgina única &mdash;</span>
+        <span class="cop">Copyright © Arnau.org, <span id="cany"></span></span>
+      </div>
 
     </div>
   </div>
 
   <script>
     document.getElementById("any").innerHTML = new Date().getFullYear();
+    document.getElementById("cany").innerHTML = new Date().getFullYear();
   </script>
 </body>
 

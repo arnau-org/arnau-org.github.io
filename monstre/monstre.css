@@ -150,6 +150,9 @@ p::before {
   margin-left: -3vw;
 }
 
+.cos span {
+  white-space: nowrap
+}
 .cap,
 .peu {
   padding: 1vw 0;

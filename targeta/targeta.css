@@ -77,6 +77,10 @@ svg.punt {
     justify-content: center;
 }
 
+p.benvingut {
+    font-size: 5em;
+}
+
 svg.gallines {
     display: block;
     width: 100%;

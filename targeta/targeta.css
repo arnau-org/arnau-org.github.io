@@ -1,0 +1,159 @@
+@charset "UTF-8";
+
+@font-face {
+    font-family: '.';
+    src: url('tipus.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+html {
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: '.';
+    font-weight: normal;
+    font-style: normal;
+    color: #000;
+    font-size: 2.1vw;
+    font-variant-ligatures: common-ligatures discretionary-ligatures;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: none;
+    -ms-text-size-adjust: none;
+    -moz-text-size-adjust: none;
+    text-size-adjust: none;
+    line-height: 1.4;
+    background: url(textura.jpg) repeat fixed;
+}
+
+.embolcall {
+    width: 96%;
+    margin: 0 auto;
+    padding-bottom: 3vh;
+}
+
+svg.punt {
+    position: absolute;
+    background: url(lis.svg) 100% 100% no-repeat;
+    width: 7vw;
+    height: auto;
+    top: -2vh;
+    right: 6vw;
+    filter: drop-shadow(0.2vw 0.2vw 0.2vw rgb(0 0 0 / 0.5));
+    -webkit-filter: drop-shadow(0.2vw 0.2vw 0.2vw rgb(0 0 0 / 0.5));
+}
+
+.targeta {
+    width: 100%;
+    height: 94vh;
+    margin: 3vh 0 0 0;
+    top: 3vh;
+    padding: 0 19.1%;
+    background: url(paper.png) repeat;
+    border-radius: 15px;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 2px 8px;
+    position: -webkit-sticky;
+    position: sticky;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+svg.gallines {
+    display: block;
+    width: 100%;
+    height: auto;
+    background: url(gallines.svg) 100% 100% no-repeat;
+}
+
+.copyright {
+    display: flex;
+    flex-direction: column;
+    row-gap: 3vw;
+}
+
+.escrit {
+    width: 100%;
+}
+
+.escrit p,
+.escrit br {
+    margin-bottom: .9em;
+}
+
+.escrit span {
+    white-space: nowrap;
+}
+
+svg.figura {
+    display: block;
+    width: 23vw;
+    height: auto;
+    margin: 0 auto;
+    background-image: url(copa.svg);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+.copyright p {
+    text-align: center;
+}
+
+@media (orientation: portrait) {
+
+    body {
+        font-size: 2.6vh;
+    }
+
+    .embolcall {
+        padding-bottom: 2vh;
+    }
+
+    .targeta {
+        height: 96vh;
+        margin: 2vh 0 0 0;
+        top: 2vh;
+        padding: 0 5%;
+    }
+
+    svg.punt {
+        width: 8vh;
+        height: auto;
+        top: -1vh;
+        right: 6vw;
+        filter: drop-shadow(0.2vh 0.2vh 0.2vh rgb(0 0 0 / 0.5));
+        -webkit-filter: drop-shadow(0.2vh 0.2vh 0.2vh rgb(0 0 0 / 0.5));
+    }
+
+    svg.figura {
+        width: 46vw;
+        height: auto;
+    }
+
+}
+
+@media (min-device-pixel-ratio: 2) {
+
+    body,
+    .targeta {
+        background-size: 50% 50%;
+    }
+}

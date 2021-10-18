@@ -77,8 +77,13 @@ svg.punt {
     justify-content: center;
 }
 
-p.benvingut {
-    font-size: 5em;
+svg.logo, svg.benvingut {
+    width: 100%;
+}
+
+svg.logo text, svg.benvingut text {
+    font-family: '.';
+    font-size: 100px;
 }
 
 svg.gallines {

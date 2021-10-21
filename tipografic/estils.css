@@ -1,0 +1,150 @@
+@charset "UTF-8";
+
+/* El reset del desgraciat */
+* {
+    margin: 0;
+    padding: 0;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+html {
+    /*
+    background: url(paper.png) repeat;
+    */
+    background-color: #fafafa;
+    overflow-y: scroll;
+}
+
+body {
+    font-family: 'Louize Display';
+    font-weight: normal;
+    font-style: normal;
+    color: #333;
+    font-size: 1.5vw;
+    font-variant-ligatures: common-ligatures discretionary-ligatures;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: none;
+    -ms-text-size-adjust: none;
+    -moz-text-size-adjust: none;
+    text-size-adjust: none;
+    line-height: 1.5;
+    /*
+    text-shadow: 0 1px 0 white;
+    */
+    background: url(ratlles.svg) no-repeat;
+    background-size: 94vw auto;
+    background-position: center bottom .5vw;
+    display: flex;
+    flex-direction: column;
+}
+
+body::before {
+    position: absolute;
+    content: "";
+    background: url(lis.svg) 100% 100% no-repeat;
+    width: 9vw;
+    height: 14.562vw;
+    top: 0;
+    left: 3vw;
+    filter: drop-shadow(0.2vw 0.2vw 0.2vw rgb(0 0 0 / 0.5));
+    -webkit-filter: drop-shadow(0.2vw 0.2vw 0.2vw rgb(0 0 0 / 0.5));
+}
+
+article {
+    width: 83%;
+    margin: 3vw 3vw 1vw 14vw;
+    display: flex;
+    flex-direction: row;
+    column-gap: 3%;
+}
+
+header,
+section {
+    width: 50%;
+}
+
+h1 {
+    margin-top: .14em;
+    font-weight: normal;
+    font-size: 12vw;
+    line-height: .8em;
+    text-align: right;
+    text-transform: uppercase;
+}
+
+section {
+    display: flex;
+    flex-direction: column;
+}
+
+section>div {
+    flex: 1 0 auto;
+}
+
+section p {
+    font-size: 1.8vw;
+    margin-bottom: .7em;
+    text-align: justify;
+}
+
+footer {
+    flex-shrink: 0;
+}
+
+footer p {
+    text-align: right;
+    margin-bottom: .7em;
+}
+
+@media (orientation: portrait) {
+    body {
+        height: max-content;
+        /* min-height: 100%; */
+    }
+
+    body::before {
+        width: 15vw;
+        height: 24.27vw;
+        top: 0;
+        left: 3vw;
+        position: fixed;
+    }
+
+    article {
+        width: 76%;
+        margin: 3vw 3vw 1vw 21vw;
+        display: flex;
+        flex-direction: column;
+    }
+    header,
+    section {
+        width: 100%;
+        margin: 1vh 0;
+        flex: 1 0 auto;
+    }
+
+    section {
+        margin: 5vh 0 10vh 0;
+    }
+
+    h1 {
+        font-size: 22vw;
+    }
+
+    section p {
+        font-size: 6vw;
+    }
+
+    footer {
+        visibility: hidden;
+    }
+
+}

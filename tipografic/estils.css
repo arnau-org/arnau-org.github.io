@@ -24,7 +24,7 @@ body {
     font-weight: normal;
     font-style: normal;
     color: #333;
-    font-size: 1.5vw;
+    /* font-size: 1.8vw; --> Veure el paràgraf */
     line-height: 1.5;
     font-variant-ligatures: common-ligatures discretionary-ligatures;
     -webkit-font-smoothing: antialiased;
@@ -78,7 +78,7 @@ section>div {
 }
 
 section p {
-    font-size: 1.8vw;
+    font-size: 1.9vw;
     margin-bottom: .7em;
     text-align: justify;
 }

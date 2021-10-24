@@ -56,7 +56,19 @@ body::before {
     background-image: url('lis.svg');
     -webkit-filter: drop-shadow(0.1vw 0.2vw 0.2vw rgb(0 0 0 / 0.4));
     filter: drop-shadow(0.1vw 0.2vw 0.2vw rgb(0 0 0 / 0.4));
+
+    animation: lis 1.2s;
+    animation-timing-function: ease-out;
 }
+
+@keyframes lis {
+    0% {
+        top: -30vh;        
+    }
+    100% {
+        top: 0;        
+    }
+  }
 
 .embolcall {
     margin: auto;

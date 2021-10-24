@@ -123,4 +123,8 @@ svg.nena {
     .embolcall>* {
         flex: 1 100%;
     }
+
+    aside {
+        padding: 0 15vw;
+    }
 }

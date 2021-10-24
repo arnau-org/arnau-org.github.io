@@ -106,7 +106,6 @@ h1 {
 p {
     margin-top: .5em;
     margin-bottom: .25em;
-    padding-left: .5vw;
 }
 
 svg.nena {
@@ -131,6 +130,10 @@ svg.nena {
 
     .embolcall>* {
         flex: 1 100%;
+    }
+
+    h1 {
+        font-size: 17vw;
     }
 
     aside {

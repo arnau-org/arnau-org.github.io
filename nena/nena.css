@@ -94,6 +94,12 @@ article>* {
 }
 
 h1 {
+
+    text-transform: uppercase;
+    font-weight: normal;
+    font-size: 10vw;
+    line-height: 1;
+    color: #444;
     margin-block-start: 0;
     margin-block-end: 0;
 }

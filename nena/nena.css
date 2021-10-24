@@ -94,7 +94,6 @@ article>* {
 }
 
 h1 {
-
     text-transform: uppercase;
     font-weight: normal;
     font-size: 10vw;
@@ -110,16 +109,8 @@ p {
     padding-left: .5vw;
 }
 
-svg.quant,
 svg.nena {
     width: 100%;
-}
-
-svg.quant {
-    background: url(quant.svg) 100% 100% no-repeat;
-}
-
-svg.nena {
     background: url(nena.svg) 100% 100% no-repeat;
 }
 

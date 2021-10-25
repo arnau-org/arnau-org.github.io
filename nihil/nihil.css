@@ -17,7 +17,7 @@ body {
 }
 
 html {
-    background-color: #fafafa;
+    background-color: #ded1bc;
     /*
     background: url(fons.svg);
     background-repeat: no-repeat;
@@ -32,7 +32,7 @@ body {
     font-family: 'Louize Display';
     font-weight: normal;
     font-style: normal;
-    color: #111;
+    color: #212e43;
     font-size: 1.85vw;
     line-height: 1.618;
     font-variant-ligatures: common-ligatures discretionary-ligatures;
@@ -98,7 +98,7 @@ h1 {
     font-weight: normal;
     font-size: 10vw;
     line-height: 1;
-    color: #444;
+    /* color: #212e43; */
     margin-block-start: 0;
     margin-block-end: 0;
 }
@@ -108,9 +108,9 @@ p {
     margin-bottom: .25em;
 }
 
-svg.nena {
+svg.nihil {
     width: 100%;
-    background: url(nena.svg) 100% 100% no-repeat;
+    background: url(nihil.svg) 100% 100% no-repeat;
 }
 
 @media (orientation: portrait) {

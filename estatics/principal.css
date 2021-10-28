@@ -1,8 +1,8 @@
 @charset "UTF-8";
 
 :root {
-    --fons: #ded1bc;
-    --principal: #212e43;
+    --principal: #ded1bc;
+    --fons: #212e43;
 }
 
 /* El reset del desgraciat */
@@ -18,12 +18,16 @@ html,
 body {
     height: 100%;
     width: 100%;
-    display: grid;
+
 }
 
 html {
     background: var(--fons);
     overflow-y: scroll;
+}
+
+body {
+    display: grid; /* Necessari pel centrat vertical de la pàgina*/
 }
 
 body {
@@ -33,7 +37,7 @@ body {
     font-style: normal;
     color: var(--principal);
     font-size: 1.85vw;
-    line-height: 1.618;
+    line-height: 1.5;
     font-variant-ligatures: common-ligatures discretionary-ligatures;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -69,13 +73,13 @@ body::-webkit-scrollbar-thumb {
 body::before {
     position: absolute;
     background-size: 100% 100%;
+    background-repeat: no-repeat;
     content: '';
     --ample: 7vw;
     width: var(--ample);
     height: calc(var(--ample) * 1.618);
     top: 0;
-    right: 4.5vw;
-    background-image: url('lis.svg');
+    right: 10vw;
     -webkit-filter: drop-shadow(0.1vw 0.2vw 0.2vw rgb(0 0 0 / 0.4));
     filter: drop-shadow(0.1vw 0.2vw 0.2vw rgb(0 0 0 / 0.4));
 
@@ -95,20 +99,20 @@ body::before {
 .embolcall {
     margin: auto;
     /* Centrat vertical i horitzonal */
-    width: 92%;
+    width: 80%;
     display: flex;
     flex-direction: row-reverse;
-    column-gap: 4%;
+    column-gap: 10%;
 }
 
 article {
-    flex: 61.8;
+    flex: 74;
     display: flex;
     flex-direction: column;
 }
 
 aside {
-    flex: 38.2;
+    flex: 26;
 }
 
 article>* {
@@ -129,9 +133,10 @@ p {
     margin-bottom: .25em;
 }
 
-svg.nihil {
+svg.figura {
     width: 100%;
-    background: url(nihil.svg) 100% 100% no-repeat;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
     background-position: center bottom;
 }
 
@@ -145,10 +150,14 @@ svg.nihil {
         --ample: 15vw;
         width: var(--ample);
         height: calc(var(--ample) * 1.618);
+        right: 5vw;
     }
 
     .embolcall {
+        width: 90%;
         flex-direction: column-reverse;
+        margin: 0 auto;
+        /* column-gap: 5%; */
     }
 
     .embolcall>* {
@@ -160,6 +169,10 @@ svg.nihil {
         margin-bottom: 2vh;
     }
 
+    article {
+        padding-bottom: 10vw;
+    }
+
     aside {
         min-height: 100vh;
         display: flex;
@@ -167,7 +180,7 @@ svg.nihil {
         justify-content: left;
     }
 
-    svg.nihil {
+    svg.figura {
         max-height: 75vh;
     }
 }

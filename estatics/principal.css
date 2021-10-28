@@ -2,7 +2,10 @@
 
 :root {
     --principal: #ded1bc;
+    --fons: #2c2c2c;
+    /*
     --fons: #212e43;
+    */
 }
 
 /* El reset del desgraciat */

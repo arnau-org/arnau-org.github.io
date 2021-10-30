@@ -22,7 +22,9 @@ body {
 }
 
 html {
+    /*
     background: var(--fons);
+    */
     overflow-y: scroll;
 }
 

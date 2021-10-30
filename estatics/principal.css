@@ -1,8 +1,8 @@
 @charset "UTF-8";
 
 :root {
-    --principal: #ded1bc;
-    --fons: #212e43;
+    --principal: #e0d8c8;
+    --fons: #1f2737;
 }
 
 /* El reset del desgraciat */
@@ -31,7 +31,7 @@ body {
 }
 
 body {
-    padding: 3vw 0;
+    padding: 5vw 0;
     font-family: 'Louize Display';
     font-weight: normal;
     font-style: normal;
@@ -106,13 +106,13 @@ body::before {
 }
 
 article {
-    flex: 74;
+    flex: 75;
     display: flex;
     flex-direction: column;
 }
 
 aside {
-    flex: 26;
+    flex: 25;
 }
 
 article>* {

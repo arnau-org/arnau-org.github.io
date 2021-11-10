@@ -2,7 +2,7 @@
 
 :root {
     --principal: #e0d8c8;
-    --fons: #1f2737;
+    --fons: #141923; /* #191f2c */ /* #1f2737 */
 }
 
 /* El reset del desgraciat */
@@ -23,10 +23,12 @@ body {
 
 html {
     background: var(--fons);
+    /*
     background-image: url(data:image/svg+xml;base64,PHN2ZyBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGZpbGwtcnVsZT0iZXZlbm9kZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLW1pdGVybGltaXQ9IjIiIHZpZXdCb3g9IjAgMCA0IDQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0ibTMgMHYzaC0zdjFoNHYtNHoiIGZpbGw9IiMxOTFmMmMiLz48L3N2Zz4=);
     background-size: 4px 4px;
     background-repeat: repeat;
     overflow-y: scroll;
+    */
 }
 
 body {
@@ -39,7 +41,7 @@ body {
     font-weight: normal;
     font-style: normal;
     color: var(--principal);
-    font-size: 1.85vw;
+    font-size: 1.9vw;
     line-height: 1.4;
     font-variant-ligatures: common-ligatures discretionary-ligatures;
     -webkit-font-smoothing: antialiased;
@@ -62,8 +64,8 @@ body::before {
     height: calc(var(--ample) * 1.618);
     top: 0;
     right: 10vw;
-    -webkit-filter: drop-shadow(0.1vw 0.2vw 0.2vw rgb(0 0 0 / 0.4));
-    filter: drop-shadow(0.1vw 0.2vw 0.2vw rgb(0 0 0 / 0.4));
+    -webkit-filter: drop-shadow(0.1vw 0.2vw 0.2vw rgb(0 0 0 / 0.9));
+    filter: drop-shadow(0.1vw 0.2vw 0.2vw rgb(0 0 0 / 0.9));
 
     animation: lis 1.2s;
     animation-timing-function: ease-out;
@@ -85,16 +87,19 @@ body::before {
     display: flex;
     flex-direction: row-reverse;
     column-gap: 10%;
+    align-items: flex-end;
 }
 
 article {
-    flex: 75;
+    flex: 78;
+    /*
     display: flex;
     flex-direction: column;
+    */
 }
 
 aside {
-    flex: 25;
+    flex: 22;
 }
 
 article>* {
@@ -119,7 +124,7 @@ p {
 }
 
 svg.quant {
-    width: 75%;
+    width: 80%;
     fill: var(--principal);
 }
 
@@ -172,17 +177,18 @@ html::-webkit-scrollbar-thumb {
         flex-direction: column-reverse;
         margin: 0 auto;
         /* column-gap: 5%; */
+        align-items: center;
     }
 
     .embolcall>* {
         flex: 1 100%;
     }
-
+/*
     h1 {
         font-size: 17vw;
         margin-bottom: 2vh;
     }
-
+*/
     article {
         padding-bottom: 10vw;
     }
@@ -192,6 +198,10 @@ html::-webkit-scrollbar-thumb {
         display: flex;
         align-items: center;
         justify-content: left;
+    }
+
+    svg.quant {
+        width: 95%;
     }
 
     svg.figura {

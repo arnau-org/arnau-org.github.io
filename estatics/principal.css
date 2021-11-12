@@ -1,8 +1,12 @@
 @charset "UTF-8";
 
 :root {
-    --principal: #e0d8c8;
-    --fons: #141923; /* #191f2c */ /* #1f2737 */
+    --color-text: rgb(27, 27, 19);
+    --color-quant: rgba(27, 27, 19, .9);
+    /* #216477; */
+    /* #a48111; */
+    /* #aa381e; */
+    --fons-barra: #efebe0;
 }
 
 /* El reset del desgraciat */
@@ -16,104 +20,78 @@
 
 html,
 body {
-    height: 100%;
     width: 100%;
-
+    height: 100%;
 }
 
 html {
-    background: var(--fons);
-    /*
-    background-image: url(data:image/svg+xml;base64,PHN2ZyBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGZpbGwtcnVsZT0iZXZlbm9kZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLW1pdGVybGltaXQ9IjIiIHZpZXdCb3g9IjAgMCA0IDQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0ibTMgMHYzaC0zdjFoNHYtNHoiIGZpbGw9IiMxOTFmMmMiLz48L3N2Zz4=);
-    background-size: 4px 4px;
+    /* background: url(fons.jpg) repeat; */
     background-repeat: repeat;
-    overflow-y: scroll;
-    */
 }
 
 body {
-    display: grid; /* Necessari pel centrat vertical de la pàgina*/
-}
-
-body {
-    padding: 5vw 0;
-    font-family: 'Louize Display';
+    display: grid;
+    border-top: .4vw solid #216477;
+    font-family: 'Lou';
     font-weight: normal;
     font-style: normal;
-    color: var(--principal);
-    font-size: 1.9vw;
+    color: var(--color-text);
+    font-size: 1.7vw;
     line-height: 1.4;
     font-variant-ligatures: common-ligatures discretionary-ligatures;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    -webkit-text-size-adjust: none;
-    -ms-text-size-adjust: none;
-    -moz-text-size-adjust: none;
-    text-size-adjust: none;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    text-size-adjust: 100%;
 }
-
-/* Floreta emergent */
-
-body::before {
-    position: absolute;
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-    content: '';
-    --ample: 8vw;
-    width: var(--ample);
-    height: calc(var(--ample) * 1.618);
-    top: 0;
-    right: 10vw;
-    -webkit-filter: drop-shadow(0.1vw 0.2vw 0.2vw rgb(0 0 0 / 0.9));
-    filter: drop-shadow(0.1vw 0.2vw 0.2vw rgb(0 0 0 / 0.9));
-
-    animation: lis 1.2s;
-    animation-timing-function: ease-out;
-}
-
-@keyframes lis {
-    0% {
-        top: -30vh;        
-    }
-    100% {
-        top: 0;        
-    }
-  }
 
 .embolcall {
     margin: auto;
-    /* Centrat vertical i horitzonal */
-    width: 80%;
+    width: 90%;
     display: flex;
     flex-direction: row-reverse;
-    column-gap: 10%;
+    column-gap: 2%;
     align-items: flex-end;
 }
 
+article::before {
+    position: absolute;
+    /* background-image: url(lis.svg); */
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    content: '';
+    --ample: 6vw;
+    width: var(--ample);
+    height: calc(var(--ample) * 1.618);
+    top: -1.5vw;
+    right: 4vw;
+    -webkit-filter: drop-shadow(0 0 .1vw rgba(0, 0, 0, 0.4));
+    filter: drop-shadow(0 0 .1vw rgba(0, 0, 0, 0.4));
+
+}
+
 article {
-    flex: 78;
-    /*
-    display: flex;
-    flex-direction: column;
-    */
+    flex: 56;
+    position: relative;
+    padding: 4vw 2.5vw 3vw 3vw;
+    /* background: url(paper.jpg) repeat; */
+    background-repeat: repeat;
+    border-radius: .8vw;
+    box-shadow: 0 0 .2vw rgba(0, 0, 0, 0.6);
+    -moz-box-shadow: 0 0 .2vw rgba(0, 0, 0, 0.6);
+    -webkit-box-shadow: 0 0 .2vw rgba(0, 0, 0, 0.6);
+    -o-box-shadow: 0 0 .2vw rgba(0, 0, 0, 0.6);
 }
 
 aside {
-    flex: 22;
-}
-
-article>* {
-    flex: 1 100%;
+    flex: 44;
+    padding: 4vw 2.5vw 3vw 0;
 }
 
 h1 {
     margin: 0;
-    /*
-    text-transform: uppercase;
-    font-weight: normal;
-    font-size: 10vw;
-    line-height: 1;
-    */
     margin-block-start: 0;
     margin-block-end: 0;
 }
@@ -124,12 +102,13 @@ p {
 }
 
 svg.quant {
-    width: 80%;
-    fill: var(--principal);
+    width: 98%;
+    fill: var(--color-quant);
 }
 
 svg.figura {
     width: 100%;
+    /* background-image: url(herald.svg); */
     background-size: 100% 100%;
     background-repeat: no-repeat;
     background-position: center bottom;
@@ -143,32 +122,38 @@ html::-webkit-scrollbar {
 
 html {
     scrollbar-width: thin;
-    scrollbar-color: var(--principal) var(--fons);
+    scrollbar-color: var(--color-text) var(--fons-barra);
 }
 
 html::-webkit-scrollbar-track {
-    background: var(--fons);
+    background: var(--fons-barra);
     border-radius: 9px;
     -webkit-border-radius: 9px;
 }
 
 html::-webkit-scrollbar-thumb {
-    background-color: var(--principal);
+    background-color: var(--color-text);
     border-radius: 6px;
     -webkit-border-radius: 6px;
-    border: 3px solid var(--fons);
+    border: 3px solid var(--fons-barra);
 }
 
 @media (orientation: portrait) {
 
+    html {
+        overflow-y: scroll;
+    }
+
     body {
+        border-top: 2vw solid #216477;
         font-size: 5.5vw;
     }
 
-    body::before {
-        --ample: 15vw;
+    article::before {
+        --ample: 10vw;
         width: var(--ample);
         height: calc(var(--ample) * 1.618);
+        top: -3vw;
         right: 5vw;
     }
 
@@ -176,21 +161,16 @@ html::-webkit-scrollbar-thumb {
         width: 90%;
         flex-direction: column-reverse;
         margin: 0 auto;
-        /* column-gap: 5%; */
         align-items: center;
     }
 
     .embolcall>* {
         flex: 1 100%;
     }
-/*
-    h1 {
-        font-size: 17vw;
-        margin-bottom: 2vh;
-    }
-*/
+
     article {
-        padding-bottom: 10vw;
+        padding-bottom: 5vw;
+        margin-bottom: 5vw;
     }
 
     aside {
@@ -198,10 +178,6 @@ html::-webkit-scrollbar-thumb {
         display: flex;
         align-items: center;
         justify-content: left;
-    }
-
-    svg.quant {
-        width: 95%;
     }
 
     svg.figura {
@@ -214,5 +190,34 @@ html::-webkit-scrollbar-thumb {
     body {
         font-size: 3vw;
     }
+}
 
+@media (min-device-pixel-ratio: 4) {
+    html {
+        background-size: 25% 25%;
+    }
+
+    article::before {
+        background-size: 25% 25%;
+    }
+}
+
+@media (min-device-pixel-ratio: 3) {
+    html {
+        background-size: 33.33333% 33.33333%;
+    }
+
+    article::before {
+        background-size: 33.33333% 33.33333%;
+    }
+}
+
+@media (min-device-pixel-ratio: 2) {
+    html {
+        background-size: 50% 50%;
+    }
+
+    article::before {
+        background-size: 50% 50%;
+    }
 }

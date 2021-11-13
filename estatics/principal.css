@@ -102,6 +102,10 @@ p {
     margin-bottom: .25em;
 }
 
+p span {
+    white-space: nowrap
+}
+
 svg.quant {
     width: 98%;
     fill: var(--color-quant);

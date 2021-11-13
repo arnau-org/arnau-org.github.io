@@ -170,6 +170,7 @@ html::-webkit-scrollbar-thumb {
 
     article, aside {
         margin: 0;
+        width: 100%;
     }
 
     article {
@@ -183,6 +184,7 @@ html::-webkit-scrollbar-thumb {
         display: flex;
         align-items: center;
         justify-content: left;
+        padding: 0;
     }
 
     svg.figura {

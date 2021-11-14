@@ -3,10 +3,7 @@
 :root {
     --color-text: rgb(27, 27, 19);
     --color-quant: rgba(27, 27, 19, .95);
-    /* #216477; */
-    /* #a48111; */
-    /* #aa381e; */
-    --fons-barra: #efebe0;
+    --fons-barra: #fafafa;
 }
 
 /* El reset del desgraciat */
@@ -29,12 +26,11 @@ html {
 }
 
 body {
-    border-top: .4vw solid #216477;
     font-family: 'Lou';
     font-weight: normal;
     font-style: normal;
     color: var(--color-text);
-    font-size: 1.7vw;
+    font-size: 1.9vw;
     line-height: 1.4;
     font-variant-ligatures: common-ligatures discretionary-ligatures;
     -webkit-font-smoothing: antialiased;
@@ -43,53 +39,45 @@ body {
     -ms-text-size-adjust: 100%;
     -moz-text-size-adjust: 100%;
     text-size-adjust: 100%;
+    position: relative;
 }
 
 .embolcall {
     margin: 0 auto;
     min-height: calc(100vh - .4vw);
     /* resto a l'alçada la bora superior (veure body) */
-    width: 90%;
+    width: 80%;
     display: flex;
-    flex-direction: row-reverse;
-    column-gap: 7%;
+    flex-direction: row;
+    column-gap: 6%;
     align-items: center;
 }
 
 article,
 aside {
-    margin: 3vw 0;
+    margin: 5vw 0;
 }
 
-article::before {
+body::before {
     position: absolute;
     background-size: 100% 100%;
     background-repeat: no-repeat;
     content: '';
-    --ample: 5.5vw;
+    --ample: 6.5vw;
     width: var(--ample);
     height: calc(var(--ample) * 1.618);
-    top: -1.5vw;
-    right: 3vw;
-    -webkit-filter: drop-shadow(0 0 .1vw rgba(0, 0, 0, 0.4));
-    filter: drop-shadow(0 0 .1vw rgba(0, 0, 0, 0.4));
-
+    top: 0vw;
+    left: 10vw;
+    -webkit-filter: drop-shadow(0 0 .2vw rgba(0, 0, 0, 0.5));
+    filter: drop-shadow(0 0 .2vw rgba(0, 0, 0, 0.5));
 }
 
 article {
-    flex: 43;
-    position: relative;
-    padding: 4vw 2.5vw 3vw 3vw;
-    background-repeat: repeat;
-    border-radius: .8vw;
-    box-shadow: 0 0 .2vw rgba(0, 0, 0, 0.6);
-    -moz-box-shadow: 0 0 .2vw rgba(0, 0, 0, 0.6);
-    -webkit-box-shadow: 0 0 .2vw rgba(0, 0, 0, 0.6);
-    -o-box-shadow: 0 0 .2vw rgba(0, 0, 0, 0.6);
+    flex: 52;
 }
 
 aside {
-    flex: 57;
+    flex: 48;
 }
 
 h1 {
@@ -99,8 +87,7 @@ h1 {
 }
 
 p {
-    margin-top: .5em;
-    margin-bottom: .25em;
+    margin-top: .75em;
 }
 
 p span {
@@ -150,16 +137,15 @@ html::-webkit-scrollbar-thumb {
     }
 
     body {
-        border-top: 2vw solid #216477;
         font-size: 5.5vw;
     }
 
-    article::before {
-        --ample: 10vw;
+    body::before {
+        --ample: 12vw;
         width: var(--ample);
         height: calc(var(--ample) * 1.618);
-        top: -3vw;
-        right: 5vw;
+        top: 0;
+        left: 10vw;
     }
 
     .embolcall {
@@ -182,7 +168,6 @@ html::-webkit-scrollbar-thumb {
     article {
         padding-bottom: 5vw;
         margin-bottom: 5vw;
-        border-radius: 2vw;
     }
 
     aside {

@@ -52,7 +52,7 @@ body {
     width: 90%;
     display: flex;
     flex-direction: row-reverse;
-    column-gap: 2%;
+    column-gap: 7%;
     align-items: center;
 }
 
@@ -90,7 +90,6 @@ article {
 
 aside {
     flex: 57;
-    padding-right: 4vw;
 }
 
 h1 {
@@ -191,7 +190,6 @@ html::-webkit-scrollbar-thumb {
         display: flex;
         align-items: center;
         justify-content: left;
-        padding: 0;
     }
 
     svg.figura {

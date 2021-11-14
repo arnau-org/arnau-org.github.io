@@ -2,7 +2,8 @@
 
 :root {
     --color-text: rgb(27, 27, 19);
-    --color-quant: rgba(27, 27, 19, .95);
+    --color-quant-t: rgba(27, 27, 19, .90);
+    --color-quant-l: #bc9d58;
     --fons-barra: #fafafa;
 }
 
@@ -39,7 +40,6 @@ body {
     -ms-text-size-adjust: 100%;
     -moz-text-size-adjust: 100%;
     text-size-adjust: 100%;
-    position: relative;
 }
 
 .embolcall {
@@ -56,20 +56,6 @@ body {
 article,
 aside {
     margin: 5vw 0;
-}
-
-body::before {
-    position: absolute;
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-    content: '';
-    --ample: 6.5vw;
-    width: var(--ample);
-    height: calc(var(--ample) * 1.618);
-    top: 0vw;
-    left: 10vw;
-    -webkit-filter: drop-shadow(0 0 .2vw rgba(0, 0, 0, 0.5));
-    filter: drop-shadow(0 0 .2vw rgba(0, 0, 0, 0.5));
 }
 
 article {
@@ -95,8 +81,15 @@ p span {
 }
 
 svg.quant {
-    width: 98%;
-    fill: var(--color-quant);
+        width: 98%;
+}
+
+svg.quant g.t {
+    fill: var(--color-quant-t);
+}
+
+svg.quant g.l {
+    fill: var(--color-quant-l);
 }
 
 svg.figura {
@@ -138,14 +131,6 @@ html::-webkit-scrollbar-thumb {
 
     body {
         font-size: 5.5vw;
-    }
-
-    body::before {
-        --ample: 12vw;
-        width: var(--ample);
-        height: calc(var(--ample) * 1.618);
-        top: 0;
-        left: 10vw;
     }
 
     .embolcall {

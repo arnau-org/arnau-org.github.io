@@ -2,8 +2,8 @@
 
 :root {
     --color-text: rgb(27, 27, 19);
-    --color-quant-t: rgba(27, 27, 19, .90);
-    --color-quant-l: #bc9d58;
+    --color-logo-t: rgba(27, 27, 19, .85);
+    --color-logo-l: #bc9d58;
     --fons-barra: #fafafa;
 }
 
@@ -59,11 +59,11 @@ aside {
 }
 
 article {
-    flex: 52;
+    flex: 51;
 }
 
 aside {
-    flex: 48;
+    flex: 49;
 }
 
 h1 {
@@ -80,16 +80,23 @@ p span {
     white-space: nowrap
 }
 
-svg.quant {
+svg.logo {
     width: 98%;
 }
 
-svg.quant g.t {
-    fill: var(--color-quant-t);
+svg.logo g.t {
+    fill: var(--color-logo-t);
 }
 
-svg.quant g.l {
-    fill: var(--color-quant-l);
+svg.logo g.l {
+    fill: var(--color-logo-l);
+}
+
+svg.quant {
+    fill: var(--color-logo-t);
+    /* fill: #aa381e; */
+    width: 61.8%;
+    /* padding-left: 8.5vw; */
 }
 
 svg.figura {

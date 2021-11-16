@@ -81,7 +81,8 @@ p span {
 }
 
 svg.logo {
-    width: 98%;
+    width: 25vw;
+    margin-bottom: 3vw;
 }
 
 svg.logo g.t {
@@ -94,8 +95,9 @@ svg.logo g.l {
 
 svg.quant {
     fill: var(--color-logo-t);
+    width: 20vw;
     /* fill: #aa381e; */
-    width: 61.8%;
+    /* width: 61.8%; */
     /* padding-left: 8.5vw; */
 }
 

@@ -1,10 +1,14 @@
 @charset "UTF-8";
 
+
+
 :root {
-    --color-text: rgb(27, 27, 19);
-    --color-logo-t: rgba(27, 27, 19, .85);
-    --color-logo-l: #bc9d58;
-    --fons-barra: #fafafa;
+    --negre: rgb(27, 27, 19);
+    --negre2: rgba(27, 27, 19, .85);
+    --or: #bc9d58;
+    --blanc: #fafafa;
+    --marge: 10%;
+    --ample-logo: 32vw;
 }
 
 /* El reset del desgraciat */
@@ -30,9 +34,9 @@ body {
     font-family: 'Lou';
     font-weight: normal;
     font-style: normal;
-    color: var(--color-text);
-    font-size: 1.9vw;
-    line-height: 1.4;
+    color: var(--negre);
+    font-size: 2vw;
+    line-height: 1.2;
     font-variant-ligatures: common-ligatures discretionary-ligatures;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -40,72 +44,61 @@ body {
     -ms-text-size-adjust: 100%;
     -moz-text-size-adjust: 100%;
     text-size-adjust: 100%;
+
+    display: grid;
 }
 
-.embolcall {
-    margin: 0 auto;
-    min-height: calc(100vh - .4vw);
-    /* resto a l'alçada la bora superior (veure body) */
-    width: 80%;
-    display: flex;
-    flex-direction: row;
-    column-gap: 6%;
-    align-items: center;
+body::before {
+    position: absolute;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    content: '';
+    --ample: 8vw;
+    width: var(--ample);
+    height: calc(var(--ample) * 1.618);
+    top: 0;
+    right: var(--marge);
+    -webkit-filter: drop-shadow(0.1vw 0.2vw 0.2vw rgb(0 0 0 / 0.4));
+    filter: drop-shadow(0.1vw 0.2vw 0.2vw rgb(0 0 0 / 0.4));
 }
 
-article,
-aside {
-    margin: 5vw 0;
+div.embolcall {
+    width: calc(100% - (var(--marge) * 2));
+    margin: auto;
 }
 
 article {
-    flex: 51;
+    height: calc(var(--ample) * 1.52675841);
 }
 
-aside {
-    flex: 49;
+div.logo,
+article {
+    margin: 3vw 0;
 }
 
-h1 {
-    margin: 0;
-    margin-block-start: 0;
-    margin-block-end: 0;
+div.logo {
+    width: calc(var(--ample-logo) + 4vw);
+    height: calc(var(--ample-logo) * 1.52675841);
+    float: left;
+    shape-outside: var(--nena);
+    background-image: var(--nena);
+    background-size: var(--ample-logo) calc(var(--ample-logo) * 1.52675841);
+    background-repeat: no-repeat;
+    shape-margin: 2em;
 }
 
 p {
-    margin-top: .75em;
-}
-
-p span {
-    white-space: nowrap
-}
-
-svg.logo {
-    width: 25vw;
-    margin-bottom: 3vw;
-}
-
-svg.logo g.t {
-    fill: var(--color-logo-t);
-}
-
-svg.logo g.l {
-    fill: var(--color-logo-l);
+    margin: 0.5em 0;
+    text-align: justify;
 }
 
 svg.quant {
-    fill: var(--color-logo-t);
-    width: 20vw;
-    /* fill: #aa381e; */
-    /* width: 61.8%; */
-    /* padding-left: 8.5vw; */
+    width: 40vw;
+    fill: var(--negre2);
 }
 
-svg.figura {
-    width: 100%;
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-    background-position: center bottom;
+svg.quant .groc {
+    fill: var(--or);
 }
 
 /* Barra desplaçament */
@@ -116,21 +109,24 @@ html::-webkit-scrollbar {
 
 html {
     scrollbar-width: thin;
-    scrollbar-color: var(--color-text) var(--fons-barra);
+    scrollbar-color: var(--negre) var(--blanc);
 }
 
 html::-webkit-scrollbar-track {
-    background: var(--fons-barra);
+    background: var(--blanc);
     border-radius: 9px;
     -webkit-border-radius: 9px;
 }
 
 html::-webkit-scrollbar-thumb {
-    background-color: var(--color-text);
+    background-color: var(--negre);
     border-radius: 6px;
     -webkit-border-radius: 6px;
-    border: 3px solid var(--fons-barra);
+    border: 3px solid var(--blanc);
 }
+
+
+/* Per polir */
 
 @media (orientation: portrait) {
 
@@ -142,37 +138,42 @@ html::-webkit-scrollbar-thumb {
         font-size: 5.5vw;
     }
 
+    body::before {
+
+        --ample: 15vw;
+        width: var(--ample);
+        height: calc(var(--ample) * 1.618);
+        top: 0;
+        right: var(--marge);
+    }
+
     .embolcall {
-        width: 90%;
-        flex-direction: column-reverse;
+        width: 90vw;
         margin: 0 auto;
-        align-items: center;
+
     }
 
-    .embolcall>* {
-        flex: 1 100%;
-    }
-
-    article,
-    aside {
+    div.logo,
+    article {
         margin: 0;
+        width: 100%;
+    }
+
+    div.logo {
+        float: none;
+        width: 100%;
+        background-size: 80% 80%;
+        background-position: center center;
+        min-height: 100vh;
+    }
+
+    svg.quant {
         width: 100%;
     }
 
     article {
         padding-bottom: 5vw;
         margin-bottom: 5vw;
-    }
-
-    aside {
-        min-height: 101vh;
-        display: flex;
-        align-items: center;
-        justify-content: left;
-    }
-
-    svg.figura {
-        max-height: 75vh;
     }
 }
 

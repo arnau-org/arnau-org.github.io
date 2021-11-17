@@ -84,12 +84,17 @@ div.logo {
     background-image: var(--nena);
     background-size: var(--ample-logo) calc(var(--ample-logo) * 1.52675841);
     background-repeat: no-repeat;
+    background-position: left top;
     shape-margin: 2em;
 }
 
 p {
     margin: 0.5em 0;
     text-align: justify;
+}
+
+span {
+    white-space: nowrap;
 }
 
 svg.quant {

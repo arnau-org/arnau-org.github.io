@@ -93,7 +93,13 @@ div.logo {
     background-size: var(--ample-logo) var(--alt-logo);
     background-repeat: no-repeat;
     background-position: left top;
-    shape-margin: 2em;
+    shape-margin: 1.5em;
+}
+
+@-moz-document url-prefix() {
+    div.logo {
+        shape-margin: 1.2em;
+    }
 }
 
 p {

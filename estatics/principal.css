@@ -9,6 +9,7 @@
     --blanc: #fafafa;
     --marge: 10%;
     --ample-logo: 32vw;
+    --alt-logo: calc(var(--ample-logo) * 1.52675841);
 }
 
 /* El reset del desgraciat */
@@ -68,7 +69,14 @@ div.embolcall {
 }
 
 article {
-    height: calc(var(--ample) * 1.52675841);
+    height: var(--alt-logo);
+    position: relative;
+}
+
+article > footer {
+    position: absolute;
+    bottom: 0;
+    right: 0;
 }
 
 div.logo,
@@ -78,11 +86,11 @@ article {
 
 div.logo {
     width: calc(var(--ample-logo) + 4vw);
-    height: calc(var(--ample-logo) * 1.52675841);
+    height: var(--alt-logo);
     float: left;
     shape-outside: var(--nena);
     background-image: var(--nena);
-    background-size: var(--ample-logo) calc(var(--ample-logo) * 1.52675841);
+    background-size: var(--ample-logo) var(--alt-logo);
     background-repeat: no-repeat;
     background-position: left top;
     shape-margin: 2em;
@@ -144,7 +152,6 @@ html::-webkit-scrollbar-thumb {
     }
 
     body::before {
-
         --ample: 15vw;
         width: var(--ample);
         height: calc(var(--ample) * 1.618);
@@ -179,6 +186,12 @@ html::-webkit-scrollbar-thumb {
     article {
         padding-bottom: 5vw;
         margin-bottom: 5vw;
+    }
+
+    article > footer {
+        position: relative;
+        padding: 3vw 0;
+        text-align: right;
     }
 }
 

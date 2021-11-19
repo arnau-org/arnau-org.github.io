@@ -58,8 +58,8 @@ body::before {
     height: calc(var(--ample) * 1.618);
     top: 0;
     right: var(--marge);
-    -webkit-filter: drop-shadow(0.2vw 0.2vw 0.1vw rgb(0 0 0 / 0.4));
-    filter: drop-shadow(0.2vw 0.2vw 0.1vw rgb(0 0 0 / 0.4));
+    -webkit-filter: drop-shadow(-0.2vw 0.2vw 0.15vw rgb(0 0 0 / 0.4));
+    filter: drop-shadow(-0.2vw 0.2vw 0.15vw rgb(0 0 0 / 0.4));
 }
 
 div.embolcall {

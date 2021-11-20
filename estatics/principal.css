@@ -207,6 +207,7 @@ html::-webkit-scrollbar-thumb {
     }
 }
 
+/*
 @media (min-device-pixel-ratio: 4) {
     html {
         background-size: 25% 25%;
@@ -236,3 +237,4 @@ html::-webkit-scrollbar-thumb {
         background-size: 50% 50%;
     }
 }
+*/

@@ -1,10 +1,7 @@
 @charset "UTF-8";
 
 :root {
-    --negre: rgb(27, 27, 19);
-    /* (sense utilitzar)
-    --negre2: rgba(27, 27, 19, .85);
-    */
+    --negre: #1b1b13;
     --or: #bc9d58;
     --blanc: #fafafa;
     --marge: 10%;
@@ -58,8 +55,8 @@ body::before {
     height: calc(var(--ample) * 1.618);
     top: 0;
     right: var(--marge);
-    -webkit-filter: drop-shadow(-0.2vw 0.2vw 0.15vw rgb(0 0 0 / 0.4));
-    filter: drop-shadow(-0.2vw 0.2vw 0.15vw rgb(0 0 0 / 0.4));
+    -webkit-filter: drop-shadow(0.2vw 0.2vw 0.1vw rgb(0 0 0 / 0.3));
+    filter: drop-shadow(0.2vw 0.2vw 0.1vw rgb(0 0 0 / 0.3));
 }
 
 div.embolcall {
@@ -206,35 +203,3 @@ html::-webkit-scrollbar-thumb {
         font-size: 3vw;
     }
 }
-
-/*
-@media (min-device-pixel-ratio: 4) {
-    html {
-        background-size: 25% 25%;
-    }
-
-    article::before {
-        background-size: 25% 25%;
-    }
-}
-
-@media (min-device-pixel-ratio: 3) {
-    html {
-        background-size: 33.33333% 33.33333%;
-    }
-
-    article::before {
-        background-size: 33.33333% 33.33333%;
-    }
-}
-
-@media (min-device-pixel-ratio: 2) {
-    html {
-        background-size: 50% 50%;
-    }
-
-    article::before {
-        background-size: 50% 50%;
-    }
-}
-*/

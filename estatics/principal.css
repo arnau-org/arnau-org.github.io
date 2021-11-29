@@ -47,7 +47,10 @@ body {
 
 body::before {
     position: absolute;
+    /*
     background-size: 100% 100%;
+    */
+    background-size: contain;
     background-repeat: no-repeat;
     content: '';
     --ample: 8vw;
@@ -84,7 +87,8 @@ div.logo {
     width: calc(var(--ample-logo) + 4vw);
     float: left;
     background-image: var(--nena);
-    background-size: var(--ample-logo) var(--alt-logo);
+    /* background-size: var(--ample-logo) var(--alt-logo); */
+    background-size: contain;
     background-repeat: no-repeat;
     background-position: left top;
     shape-margin: 1.6em;

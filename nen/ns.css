@@ -1,0 +1,141 @@
+@charset "utf-8";
+
+:root {
+  --fons: #212121;
+  --text-p: #EDD3B3;
+  --text-h: #607659;
+  --text-f: #335642;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+html {
+  overflow-y: scroll;
+}
+
+html,
+body {
+  width: 100%;
+  min-height: 100vh;
+}
+
+body {
+  background-color: var(--fons);
+  padding: 2vw 5vw;
+  font-size: calc(.6em + .7vw);
+  font-family: '.';
+
+  color: var(--text-p);
+  display: flex;
+  flex-direction: column;
+  gap: 3vw;
+}
+
+header {
+  width: clamp(15vw, 50%, 30vh);
+  height: auto;
+  margin: 0 auto;
+
+}
+
+header>svg {
+  width: 100%;
+  background-image: url(nenlogo.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.embolcall {
+  display: flex;
+  flex-direction: row;
+  gap: 5vw;
+}
+
+.titol,
+.palla {
+  flex: 1;
+}
+
+.palla {
+  margin-top: -0.2em;
+}
+
+h1 {
+  font-weight: normal;
+  font-style: normal;
+  font-size: 4em;
+  line-height: 0.95;
+  color: var(--text-h);
+  text-transform: uppercase;
+  text-align: right;
+  font-variant-ligatures: common-ligatures discretionary-ligatures;
+}
+
+p {
+  font-weight: 100;
+  font-style: normal;
+  padding-bottom: .75em;
+  line-height: 1.4;
+  text-align: justify;
+}
+
+footer {
+  font-weight: 100;
+  font-style: normal;
+  font-size: 80%;
+  color: var(--text-f);
+  text-align: right;
+}
+
+/* Barra desplaçament */
+
+html::-webkit-scrollbar {
+  width: 11px;
+}
+
+html {
+  scrollbar-width: thin;
+  scrollbar-color: var(--text-f) var(--fons);
+}
+
+html::-webkit-scrollbar-track {
+  background: var(--fons);
+  border-radius: 9px;
+  -webkit-border-radius: 9px;
+}
+
+html::-webkit-scrollbar-thumb {
+  background-color: var(--text-f);
+  border-radius: 6px;
+  -webkit-border-radius: 6px;
+  border: 3px solid var(--fons);
+}
+
+@media only screen and (max-width:734px) {
+  body {
+    padding: 3vh 2vh;
+    font-size: calc(.6em + 1.5vw);
+    gap: 8vh;
+  }
+
+  .embolcall {
+    flex-direction: column;
+    gap: 8vh;
+  }
+
+  h1 {
+    text-align: center;
+  }
+}

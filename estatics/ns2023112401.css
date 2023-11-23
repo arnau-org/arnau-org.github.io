@@ -5,6 +5,7 @@
   --text-p: #FCFCFD;
   --text-h: #749387;
   --text-f: #507973;
+  --vh: 100vh;
 }
 
 * {

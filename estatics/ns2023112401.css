@@ -5,7 +5,6 @@
   --text-p: #FCFCFD;
   --text-h: #749387;
   --text-f: #507973;
-  --vh: 100vh;
 }
 
 * {
@@ -24,8 +23,8 @@ html {
 
 body {
   width: 100%;
-  min-height: 100vh;
-  min-height: calc(var(--vh, 1vh) * 100); /* hack per a mòbils, veure js a index.html */
+  height: 100%;
+  /* min-height: 100vh; */
   background-color: var(--fons);
   /* padding: 3vw 5vw 2vw 5vw; */
   font-size: calc(.6em + .7vw);

@@ -2,7 +2,7 @@
 
 :root {
   --fons: #212121;
-  --text-p: #FCFCFD;
+  --text-p: #EDD3B3; /* #FCFCFD; */
   --text-h: #749387;
   --text-f: #507973;
 }
@@ -23,8 +23,9 @@ html, body {
 body {
   background-color: var(--fons);
   font-size: calc(.6em + .7vw);
-  font-family: '.';
+  font-family: 'sf';
   font-style: normal;
+  font-weight: normal;
   color: var(--text-p);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -81,6 +82,7 @@ main {
 }
 
 h1 {
+  font-family: 'z';
   font-weight: normal;
   font-size: 4em;
   line-height: 0.95;
@@ -91,14 +93,12 @@ h1 {
 }
 
 p {
-  font-weight: 300;
   padding-bottom: .75em;
   line-height: 1.4;
   text-align: justify;
 }
 
 footer {
-  font-weight: 300;
   font-size: 90%;
   color: var(--text-f);
   text-align: right;
@@ -148,6 +148,7 @@ html::-webkit-scrollbar-thumb {
 
   header {
     padding-top: 5vh;
+    width: clamp(15vw, 50%, 40vh);
   }
 
   footer {

@@ -49,10 +49,12 @@ body::before {
   right: 10vw;
 }
 
+/*
 body::before, .motiu>svg {
   -webkit-filter: drop-shadow(1px 1px 1px #fee7d832);
   filter: drop-shadow(1px 1px 1px #fee7d832);
 }
+*/
 
 body {
   padding-top: calc(4vw + 1em);

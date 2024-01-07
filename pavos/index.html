@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ca">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arnau.org</title>
+
+  <meta name="description"
+    content="Tot allò que sempre vas voler saber sobre el domini arnau.org i mai et vas atrevir a preguntar">
+  <meta name="author" content="Antoni Arnau">
+  <meta name="copyright" content="Antoni Arnau">
+
+  <link rel="preload" href="tipus.css" as="style" type="text/css">
+  <link rel="preload" href="estils.css" as="style" type="text/css">
+  <link rel="preload" href="homens.css" as="style" type="text/css">
+
+  <link href="tipus.css" rel="stylesheet">
+  <link href="estils.css" rel="stylesheet">
+  <link href="homens.css" rel="stylesheet">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="estatics/calb_p_2024/apple-touch-icon.png">
+  <link rel="icon" type="image/svg+xml" href="estatics/calb_p_2024/favicon.svg">
+  <link rel="icon" type="image/png" href="estatics/calb_p_2024/favicon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="estatics/calb_p_2024/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="estatics/calb_p_2024/favicon-16x16.png">
+  <link rel="manifest" href="estatics/calb_p_2024/site.webmanifest">
+  <link rel="mask-icon" href="estatics/calb_p_2024/safari-pinned-tab.svg" color="#febe98">
+  <link rel="shortcut icon" href="estatics/calb_p_2024/favicon.ico">
+  <meta name="msapplication-TileColor" content="#febe98">
+  <meta name="msapplication-config" content="estatics/calb_p_2024/browserconfig.xml">
+  <meta name="theme-color" content="#ffffff">
+
+  <style>
+    body {
+      background-color: #1F2016;
+    }
+
+    body::before {
+      position: absolute;
+      background-size: contain;
+      background-repeat: no-repeat;
+      content: '';
+      width: 180px;
+      height: calc(180px * 88 / 500);
+      top: 2vw;
+      right: 10vw;
+      background-image: url(codi.svg);
+    }
+
+    .motiu {
+      width: 100%;     
+      background-image: var(--homens);
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: top left;
+    }
+
+    h1 {
+      color: #FA6841;
+      /* color: #979289; */
+      color: #FEBE98;
+      color: #BA4419;
+      color: #F2BE8E;
+      font-size: calc(2.5em + .7vw);
+    }
+
+    p,
+    footer {
+      color: #bab19d;
+      color: #9B9B87;
+      font-size: calc(.6em + .6vw);
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <div class="embolcall">
+      <div class="motiu">
+      </div>
+
+      <div class="text">
+        <h1>Tot allò que sempre vas voler saber sobre arnau.org i mai et vas atrevir a preguntar</h1>
+
+        <p>Aquest web ha estat concebut per a satisfer la curiositat d'aquells escollits que, a la recerca de la
+          veritat o d'un major coneixement, han arribat fins aquí amb l'ànim de saber què o qui hi ha al
+          darrere d'aquest domini.</p>
+
+        <p>Arnau.org pertany a una família, de cognom prou evident, els membres de la qual utilitzen el servei
+          de correu electrònic vinculat al domini, per a comunicar-se entre ells i amb la resta del món.</p>
+
+        <p>Així doncs, aquesta pàgina és un gest de cortesia, per part dels seus propietaris, cap els curiosos
+          que s'adrecen a aquest web.</p>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    Copyright © Arnau.org, 2007&mdash;<span id="any"></span>
+  </footer>
+
+  <script>
+    document.getElementById("any").innerHTML = new Date().getFullYear();
+  </script>
+</body>
+
+</html>

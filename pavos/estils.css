@@ -207,3 +207,46 @@ html::-webkit-scrollbar-thumb {
     text-align: center;
   }
 }
+
+@media (min-width: 735px) and (orientation: portrait) {
+  html {
+    height: auto;
+  }
+
+  body {
+    height: auto;
+    overflow-x: hidden;
+    overflow-y: auto;
+    font-size: calc(.6em + 2vw);
+    gap: 8vh;
+  }
+
+  body::before {
+    right: 10%;
+  }
+
+  main,
+  footer {
+    width: 80%;
+  }
+
+  footer {
+    padding-bottom: 3vh;
+  }
+
+  .embolcall {
+    flex-direction: column;
+  }
+
+  .motiu, .text {
+    flex: 1;
+  }
+
+  .motiu {
+    width: 100%;
+    min-height: calc( 80vw * 1489 / 1315 );
+    background-size: 80% 80%;
+    background-position: center center;
+    padding: 8vh 0 2vh 0;
+  }
+}

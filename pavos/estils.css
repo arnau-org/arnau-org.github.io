@@ -175,7 +175,7 @@ html::-webkit-scrollbar-thumb {
   }
 
   body::before {
-    right: 4%;
+    left: 4%;
   }
 
   main,
@@ -222,7 +222,7 @@ html::-webkit-scrollbar-thumb {
   }
 
   body::before {
-    right: 10%;
+    left: 10%;
   }
 
   main,

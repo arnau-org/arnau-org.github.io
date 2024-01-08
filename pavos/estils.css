@@ -1,8 +1,25 @@
 @charset "utf-8";
 
+@font-face {
+  font-family: 'neutra';
+  src: url('nf.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'bloc';
+  src: url('bl.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
-  --fons: #FEBE98;
-  --text: #814A49;
+  --fons: #1F2016;
+  --text: #9B9B87;
+  --h1: #EC7A9C;
 }
 
 * {
@@ -21,7 +38,7 @@ body {
 
 body {
   background-color: var(--fons);
-  font-size: calc(.6em + .7vw);
+  font-size: calc(.6em + .8vw);
   font-family: 'neutra';
   font-style: normal;
   font-weight: normal;
@@ -43,18 +60,12 @@ body::before {
   background-size: contain;
   background-repeat: no-repeat;
   content: '';
-  width: 140px;
-  height: calc(140px * 175 / 500);
+  width: 120px;
+  height: calc(120px * 175 / 500);
   top: 2vw;
   right: 10vw;
+  background-image: url(ar.svg);
 }
-
-/*
-body::before, .motiu>svg {
-  -webkit-filter: drop-shadow(1px 1px 1px #fee7d832);
-  filter: drop-shadow(1px 1px 1px #fee7d832);
-}
-*/
 
 body {
   padding-top: calc(4vw + 1em);
@@ -91,19 +102,20 @@ main {
   flex: 38.2;
 }
 
-.motiu>svg {
+.motiu {
   width: 100%;
+  background-image: url(gm.svg);
   background-repeat: no-repeat;
   background-size: contain;
+  background-position: top center;
 }
 
 h1 {
   font-family: 'bloc';
   font-weight: normal;
-  font-size: 2.8em;
+  color: var(--h1);
+  font-size: 2em;
   line-height: 0.9;
-  color: #FEEFE6;
-  /* text-shadow: 0 0 3px #814A4948; */
   padding-bottom: .2em;
 }
 
@@ -119,9 +131,11 @@ footer {
   text-align: right;
 }
 
+/*
 p, footer {
   text-shadow: 1px 1px 1px #fee7d832;
 }
+*/
 
 /* Barra desplaçament */
 
@@ -156,7 +170,7 @@ html::-webkit-scrollbar-thumb {
     height: auto;
     overflow-x: hidden;
     overflow-y: auto;
-    font-size: calc(.6em + 1.5vw);
+    font-size: calc(.6em + 2vw);
     gap: 8vh;
   }
 
@@ -182,8 +196,10 @@ html::-webkit-scrollbar-thumb {
   }
 
   .motiu {
-    width: 61.8%;
-    align-self: center;
+    width: 100%;
+    min-height: calc( 92vw * 1489 / 1315 );
+    background-size: 80% 80%;
+    background-position: center center;
     padding: 8vh 0 2vh 0;
   }
 

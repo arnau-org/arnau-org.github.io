@@ -99,7 +99,13 @@ main {
 
 .motiu {
   width: 100%;
+  /*
   background: url(../imatges/gentlemen.svg) top/contain no-repeat;
+  */
+  background-image: url(../imatges/g1.svg),url(../imatges/g2.svg);
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 
 h1 {

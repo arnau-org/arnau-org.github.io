@@ -1,0 +1,12 @@
+{
+  "short_name": "Arnau.org",
+  "name": "Arnau.org",
+  "icons": [{
+    "src": "img/icon.png",
+    "type": "image/png",
+    "sizes": "192x192"
+  }],
+  "start_url": ".",
+  "background_color": "#e4dcc8",
+  "theme_color": "#e4dcc8"
+}

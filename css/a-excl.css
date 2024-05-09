@@ -1,0 +1,268 @@
+/* Estableix la codificació de caràcters */
+@charset "utf-8";
+
+/* Definició de tipus de lletra */
+
+@font-face {
+  font-family: "Normal";
+  font-style: normal;
+  font-weight: normal;
+  src: url("/tipus/normal.woff2") format("woff2"),
+    url("/tipus/normal.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Semi";
+  font-style: normal;
+  font-weight: normal;
+  src: url("/tipus/semi.woff2") format("woff2"),
+    url("/tipus/semi.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Fina";
+  font-style: normal;
+  font-weight: normal;
+  src: url("/tipus/fina.woff2") format("woff2"),
+    url("/tipus/fina.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Cursiva";
+  font-style: normal;
+  font-weight: normal;
+  src: url("/tipus/cursiva.woff2") format("woff2"),
+    url("/tipus/cursiva.woff") format("woff");
+}
+
+/* Estils globals */
+:root {
+  --blanc: #e4dcc8;
+  --negre: #222122;
+  --roig: #e84a07;
+  --farciment: 30px;
+  --midaTipus: 22px;
+  --altLinia: 1.4;
+}
+
+* {
+  min-width: 0;
+  font: inherit;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  font-smooth: always;
+  text-rendering: optimizeLegibility;
+}
+
+img,
+video,
+svg {
+  display: block;
+  height: auto;
+  max-width: 100%;
+}
+
+/* Cos i HTML */
+html {
+  font-family: "Normal";
+  font-size: var(--midaTipus);
+  line-height: var(--altLinia);
+  color: var(--negre);
+  overflow-y: scroll;
+}
+
+body {
+  min-height: 100dvh;
+  background-color: var(--blanc);
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+[title] {
+  cursor: pointer;
+}
+
+/* Capçalera */
+header.capPagina {
+  flex-shrink: 0;
+  padding-top: var(--farciment);
+  width: calc(100% - (var(--farciment) * 2));
+  margin: auto;
+  font-family: "Semi";
+  font-size: max(var(--midaTipus), 1.526vw);
+  letter-spacing: -0.04em;
+  line-height: .7;
+  display: flex;
+  justify-content: space-between;
+}
+
+header.capPagina svg {
+  width: 60px;
+}
+
+header.capPagina svg path.aorg {
+  fill: var(--negre);
+}
+
+header.capPagina svg path.excl {
+  fill: var(--roig);
+}
+
+/* Contingut principal */
+main {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+}
+
+article {
+  width: calc(100% - (var(--farciment) * 6));
+  margin: auto;
+  display: flex;
+}
+
+article header,
+article section {
+  flex: 1 0 50%;
+}
+
+article section {
+  position: relative;
+}
+
+article section:before {
+  position: absolute;
+  content: "\00A7";
+  left: -60px;
+  top: -24px;
+  color: var(--roig);
+  font-size: 85px;
+}
+
+article h1 {
+  font-family: "Fina";
+  text-transform: lowercase;
+  font-size: 5vw;
+  letter-spacing: -0.08em;
+  line-height: 0.73em;
+  margin-top: -0.07em;
+}
+
+article p {
+  margin-bottom: 1em;
+  letter-spacing: -0.05em;
+}
+
+p.cita {
+  text-align: right;
+}
+
+em {
+  font-family: "Cursiva";
+  font-style: italic;
+  text-transform: lowercase;
+}
+
+/* Peu de pàgina */
+footer.peuPagina {
+  position: relative;
+  width: 100%;
+  height: 45px;
+  overflow: hidden;
+}
+
+footer.peuPagina::after {
+  position: absolute;
+  bottom: 0;
+  content: '';
+  display: block;
+  width: 5px;
+  height: 45px;
+  background-color: var(--roig);
+  margin-left: 50%;
+  transform: translateX(-50%);
+}
+
+footer.peuPagina p {
+  margin-left: var(--farciment);
+  font-size: 80%;
+  margin-bottom: 1em;
+  letter-spacing: -0.05em;
+}
+
+/* Barra de desplaçament */
+html::-webkit-scrollbar {
+  width: 11px;
+}
+
+html {
+  scrollbar-width: thin;
+  scrollbar-color: var(--negre) var(--blanc);
+}
+
+html::-webkit-scrollbar-track {
+  background: var(--blanc);
+  border-radius: 9px;
+  -webkit-border-radius: 9px;
+}
+
+html::-webkit-scrollbar-thumb {
+  background-color: var(--negre);
+  border-radius: 6px;
+  -webkit-border-radius: 6px;
+  border: 3px solid var(--blanc);
+}
+
+@media only screen and (max-width:734px) {
+
+  body {
+    height: auto;
+    gap: 8vh;
+  }
+
+  header.capPagina,
+  article,
+  footer.peuPagina {
+    width: 92%;
+  }
+
+  article {
+    flex-direction: column;
+    gap: 5vh;
+  }
+
+  article section:before {
+    visibility: hidden;
+  }
+
+  article h1 {
+    font-size: max(36px, 10vw);
+  }
+
+  footer.peuPagina {
+    padding-bottom: 3vh;
+  }
+
+  footer.peuPagina p {
+    margin-left: 4%;
+    font-size: 80%;
+  }
+
+  footer.peuPagina::after {
+    visibility: hidden;
+  }
+}

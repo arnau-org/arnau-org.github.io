@@ -1,0 +1,1 @@
+document.getElementById("_any_").innerHTML = new Date().getFullYear();

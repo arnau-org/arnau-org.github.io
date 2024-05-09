@@ -198,7 +198,7 @@ footer.peuPagina::after {
 
 footer.peuPagina p {
   margin-left: var(--farciment);
-  font-size: 80%;
+  font-size: 90%;
   margin-bottom: 1em;
   letter-spacing: -0.05em;
 }

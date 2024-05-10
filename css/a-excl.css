@@ -139,6 +139,7 @@ article section {
   flex: 1 0 50%;
 }
 
+/*
 article section {
   position: relative;
 }
@@ -151,6 +152,7 @@ article section:before {
   color: var(--roig);
   font-size: 85px;
 }
+*/
 
 article h1 {
   font-family: "Fina";
@@ -203,6 +205,53 @@ footer.peuPagina p {
   letter-spacing: -0.05em;
 }
 
+/* La màquina */
+div.embolcallMaquina {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+svg.maquina {
+  width: 61.8%;
+  fill: var(--roig);
+}
+
+path.s {
+  animation: counter-rotation 100s infinite linear;
+  transform-origin: 100.136px 225.345px
+}
+
+path.m {
+  animation: rotation 150s infinite linear;
+  transform-origin: 254.675px 379.447px
+}
+
+path.l {
+  animation: counter-rotation 200s infinite linear;
+  transform-origin: 461.37px 173.694px
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg)
+  }
+
+  to {
+    transform: rotate(359deg)
+  }
+}
+
+@keyframes counter-rotation {
+  from {
+    transform: rotate(359deg)
+  }
+
+  to {
+    transform: rotate(0deg)
+  }
+}
+
 /* Barra de desplaçament */
 html::-webkit-scrollbar {
   width: 11px;
@@ -250,6 +299,11 @@ html::-webkit-scrollbar-thumb {
 
   article h1 {
     font-size: max(36px, 10vw);
+  }
+
+  div.embolcallMaquina {
+    margin-top: 5vh;
+    justify-content: center;
   }
 
   footer.peuPagina {

@@ -293,9 +293,11 @@ html::-webkit-scrollbar-thumb {
     gap: 5vh;
   }
 
+/*
   article section:before {
     visibility: hidden;
   }
+*/
 
   article h1 {
     font-size: max(36px, 10vw);

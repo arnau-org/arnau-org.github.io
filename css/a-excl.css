@@ -1,4 +1,4 @@
-/* Estableix la codificació de caràcters */
+/* Configuració de la codificació de caràcters */
 @charset "utf-8";
 
 /* Definició de tipus de lletra */
@@ -84,7 +84,7 @@ html {
 }
 
 body {
-  min-height: 100dvh;
+  min-height: 100vh;
   background-color: var(--blanc);
   display: flex;
   flex-direction: column;

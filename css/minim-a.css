@@ -1,0 +1,273 @@
+/* Configuració de la codificació de caràcters */
+@charset "utf-8";
+
+/* Definició de tipus de lletra */
+@font-face {
+  font-family: "Normal";
+  src: url("/tipus/normal.woff2") format("woff2"),
+       url("/tipus/normal.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Semi";
+  src: url("/tipus/semi.woff2") format("woff2"),
+       url("/tipus/semi.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Fina";
+  src: url("/tipus/fina.woff2") format("woff2"),
+       url("/tipus/fina.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Cursiva";
+  src: url("/tipus/cursiva.woff2") format("woff2"),
+       url("/tipus/cursiva.woff") format("woff");
+}
+
+/* Estils globals */
+:root {
+  --blanc: #e4dcc8;
+  --negre: #222122;
+  --roig: #e84a07;
+  --farciment: 30px;
+  --midaTipus: 22px;
+  --altLinia: 1.4;
+  --altLinia-header: 0.7;
+  --midaTipus-header: max(22px, 1.526vw);
+  --midaTipus-article: 5vw;
+  --midaTipus-article-responsive: max(36px, 10vw);
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+img,
+video,
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+html {
+  font-family: "Normal", sans-serif;
+  font-size: var(--midaTipus);
+  line-height: var(--altLinia);
+  color: var(--negre);
+  overflow-y: scroll;
+  scrollbar-width: thin;
+  scrollbar-color: var(--negre) var(--blanc);
+}
+
+body {
+  min-height: 100dvh;
+  background-color: var(--blanc);
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+[title] {
+  cursor: pointer;
+}
+
+/* Capçalera */
+header.capPagina {
+  flex-shrink: 0;
+  padding-top: var(--farciment);
+  width: calc(100% - 2 * var(--farciment));
+  margin: auto;
+  font-family: "Semi";
+  font-size: var(--midaTipus-header);
+  letter-spacing: -0.04em;
+  line-height: var(--altLinia-header);
+  display: flex;
+  justify-content: space-between;
+}
+
+header.capPagina svg {
+  width: 60px;
+}
+
+header.capPagina svg path.aorg {
+  fill: var(--negre);
+}
+
+header.capPagina svg path.excl {
+  fill: var(--roig);
+}
+
+/* Contingut principal */
+main {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+}
+
+article {
+  width: calc(100% - 6 * var(--farciment));
+  margin: auto;
+  display: flex;
+}
+
+article header,
+article section {
+  flex: 1 0 50%;
+}
+
+article h1 {
+  font-family: "Fina";
+  text-transform: lowercase;
+  font-size: var(--midaTipus-article);
+  letter-spacing: -0.08em;
+  line-height: 0.73em;
+  margin-top: -0.07em;
+}
+
+article p {
+  margin-bottom: 1em;
+  letter-spacing: -0.05em;
+}
+
+p.cita {
+  text-align: right;
+}
+
+em {
+  font-family: "Cursiva";
+  font-style: italic;
+  text-transform: lowercase;
+}
+
+/* Peu de pàgina */
+footer.peuPagina {
+  position: relative;
+  width: 100%;
+  height: 45px;
+  overflow: hidden;
+}
+
+footer.peuPagina::after {
+  position: absolute;
+  bottom: 0;
+  content: '';
+  width: 5px;
+  height: 45px;
+  background-color: var(--roig);
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+footer.peuPagina p {
+  margin-left: var(--farciment);
+  font-size: 90%;
+  margin-bottom: 1em;
+  letter-spacing: -0.05em;
+}
+
+/* La màquina */
+div.embolcallMaquina {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+svg.maquina {
+  width: 61.8%;
+  fill: var(--roig);
+}
+
+path.s {
+  animation: counter-rotation 100s infinite linear;
+  transform-origin: 100.136px 225.345px;
+}
+
+path.m {
+  animation: rotation 150s infinite linear;
+  transform-origin: 254.675px 379.447px;
+}
+
+path.l {
+  animation: counter-rotation 200s infinite linear;
+  transform-origin: 461.37px 173.694px;
+}
+
+@keyframes rotation {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(359deg); }
+}
+
+@keyframes counter-rotation {
+  from { transform: rotate(359deg); }
+  to { transform: rotate(0deg); }
+}
+
+/* Barra de desplaçament */
+html::-webkit-scrollbar {
+  width: 11px;
+}
+
+html::-webkit-scrollbar-track {
+  background: var(--blanc);
+  border-radius: 9px;
+}
+
+html::-webkit-scrollbar-thumb {
+  background-color: var(--negre);
+  border-radius: 6px;
+  border: 3px solid var(--blanc);
+}
+
+/* Responsiu */
+@media only screen and (max-width: 734px) {
+  body {
+    height: auto;
+    gap: 8vh;
+  }
+
+  header.capPagina,
+  article,
+  footer.peuPagina {
+    width: 92%;
+  }
+
+  article {
+    flex-direction: column;
+    gap: 5vh;
+  }
+
+  article h1 {
+    font-size: var(--midaTipus-article-responsive);
+  }
+
+  div.embolcallMaquina {
+    margin-top: 5vh;
+    justify-content: center;
+  }
+
+  footer.peuPagina {
+    padding-bottom: 3vh;
+  }
+
+  footer.peuPagina p {
+    margin-left: 4%;
+    font-size: 80%;
+  }
+
+  footer.peuPagina::after {
+    visibility: hidden;
+  }
+}

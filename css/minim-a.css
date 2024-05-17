@@ -98,15 +98,15 @@ header.capPagina {
   justify-content: space-between;
 }
 
-header.capPagina svg {
+svg.logo {
   width: 60px;
 }
 
-header.capPagina svg path.aorg {
+svg.logo .negre {
   fill: var(--negre);
 }
 
-header.capPagina svg path.excl {
+svg.logo .roig {
   fill: var(--roig);
 }
 
@@ -190,27 +190,27 @@ svg.maquina {
   fill: var(--roig);
 }
 
-path.s {
-  animation: counter-rotation 100s infinite linear;
+svg.maquina .p {
+  animation: invers-rellotge 100s infinite linear;
   transform-origin: 100.136px 225.345px;
 }
 
-path.m {
-  animation: rotation 150s infinite linear;
+svg.maquina .m {
+  animation: rellotge 150s infinite linear;
   transform-origin: 254.675px 379.447px;
 }
 
-path.l {
-  animation: counter-rotation 200s infinite linear;
+svg.maquina .g {
+  animation: invers-rellotge 200s infinite linear;
   transform-origin: 461.37px 173.694px;
 }
 
-@keyframes rotation {
+@keyframes rellotge {
   from { transform: rotate(0deg); }
   to { transform: rotate(359deg); }
 }
 
-@keyframes counter-rotation {
+@keyframes invers-rellotge {
   from { transform: rotate(359deg); }
   to { transform: rotate(0deg); }
 }

@@ -4,24 +4,32 @@
 /* Definició de tipus de lletra */
 @font-face {
   font-family: "Normal";
+  font-style: normal;
+  font-weight: normal;
   src: url("/tipus/normal.woff2") format("woff2"),
        url("/tipus/normal.woff") format("woff");
 }
 
 @font-face {
   font-family: "Semi";
+  font-style: normal;
+  font-weight: normal;
   src: url("/tipus/semi.woff2") format("woff2"),
        url("/tipus/semi.woff") format("woff");
 }
 
 @font-face {
   font-family: "Fina";
+  font-style: normal;
+  font-weight: normal;
   src: url("/tipus/fina.woff2") format("woff2"),
        url("/tipus/fina.woff") format("woff");
 }
 
 @font-face {
   font-family: "Cursiva";
+  font-style: normal;
+  font-weight: normal;
   src: url("/tipus/cursiva.woff2") format("woff2"),
        url("/tipus/cursiva.woff") format("woff");
 }
@@ -148,7 +156,6 @@ p.cita {
 
 em {
   font-family: "Cursiva";
-  font-style: italic;
   text-transform: lowercase;
 }
 

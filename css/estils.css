@@ -36,8 +36,8 @@
 
 /* Estils globals */
 :root {
-  --blanc: #F5F1EB;
-  --negre: #31414B;
+  --fons: #F5F1EB;
+  --text: #31414B;
   --color: #E1CD6D;
   --farciment: 30px;
   --midaTipus: 22px;
@@ -74,16 +74,16 @@ html {
   font-family: "Normal", sans-serif;
   font-size: var(--midaTipus);
   line-height: var(--altLinia);
-  color: var(--negre);
+  color: var(--text);
   font-feature-settings: 'onum';
   overflow-y: scroll;
   scrollbar-width: thin;
-  scrollbar-color: var(--negre) var(--blanc);
+  scrollbar-color: var(--text) var(--fons);
 }
 
 body {
   min-height: 100dvh;
-  background-color: var(--blanc);
+  background-color: var(--fons);
   display: flex;
   flex-direction: column;
   gap: 40px;
@@ -106,7 +106,7 @@ header.capPagina {
 svg.logo {
   width: 60px;
   height: auto;
-  fill: var(--negre);
+  fill: var(--color);
 }
 
 /* Contingut principal */
@@ -220,14 +220,14 @@ html::-webkit-scrollbar {
 }
 
 html::-webkit-scrollbar-track {
-  background: var(--blanc);
+  background: var(--fons);
   border-radius: 9px;
 }
 
 html::-webkit-scrollbar-thumb {
-  background-color: var(--negre);
+  background-color: var(--text);
   border-radius: 6px;
-  border: 3px solid var(--blanc);
+  border: 3px solid var(--fons);
 }
 
 /* Responsiu */

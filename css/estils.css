@@ -186,6 +186,7 @@ footer.peuPagina p {
 svg.maquina {
   margin-top: 2rem;
   width: 100%;
+  max-width: 400px;
   fill: var(--roig);
 }
 

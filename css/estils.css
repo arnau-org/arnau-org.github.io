@@ -6,47 +6,46 @@
   font-family: "Normal";
   font-style: normal;
   font-weight: normal;
-  src: url("/tipus/normal.woff2") format("woff2"),
-    url("/tipus/normal.woff") format("woff");
-}
-
-@font-face {
-  font-family: "Semi";
-  font-style: normal;
-  font-weight: normal;
-  src: url("/tipus/semi.woff2") format("woff2"),
-    url("/tipus/semi.woff") format("woff");
-}
-
-@font-face {
-  font-family: "Fina";
-  font-style: normal;
-  font-weight: normal;
-  src: url("/tipus/fina.woff2") format("woff2"),
-    url("/tipus/fina.woff") format("woff");
+  src: url("/tipus/nk-normal.woff2") format("woff2"),
+       url("/tipus/nk-normal.woff") format("woff");
 }
 
 @font-face {
   font-family: "Cursiva";
   font-style: normal;
   font-weight: normal;
-  src: url("/tipus/cursiva.woff2") format("woff2"),
-    url("/tipus/cursiva.woff") format("woff");
+  src: url("/tipus/nk-cursiva.woff2") format("woff2"),
+       url("/tipus/nk-cursiva.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Fina";
+  font-style: normal;
+  font-weight: normal;
+  src: url("/tipus/nk-fina.woff2") format("woff2"),
+       url("/tipus/nk-fina.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Semi";
+  font-style: normal;
+  font-weight: normal;
+  src: url("/tipus/nk-semi.woff2") format("woff2"),
+       url("/tipus/nk-semi.woff") format("woff");
 }
 
 /* Estils globals */
 :root {
-  --blanc: #e4dcc8;
-  --negre: #222122;
-  --roig: #e84a07;
+  --blanc: #F5F1EB;
+  --negre: #363637;
+  --roig: #FF5D3C;
   --farciment: 30px;
   --midaTipus: 22px;
   --altLinia: 1.4;
-}
-
-* {
-  min-width: 0;
-  font: inherit;
+  --altLinia-header: 0.7;
+  --midaTipus-header: max(22px, 1.526vw);
+  --midaTipus-article: 4.5vw;
+  --midaTipus-article-responsive: max(36px, 10vw);
 }
 
 *,
@@ -56,31 +55,30 @@
   padding: 0;
   border: 0;
   box-sizing: border-box;
+  font: inherit;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
-  -ms-text-size-adjust: 100%;
-  -moz-text-size-adjust: 100%;
-  text-size-adjust: 100%;
-  font-smooth: always;
   text-rendering: optimizeLegibility;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 img,
 video,
 svg {
   display: block;
-  height: auto;
   max-width: 100%;
+  height: auto;
 }
 
-/* Cos i HTML */
 html {
-  font-family: "Normal";
+  font-family: "Normal", sans-serif;
   font-size: var(--midaTipus);
   line-height: var(--altLinia);
   color: var(--negre);
+  font-feature-settings: 'onum';
   overflow-y: scroll;
+  scrollbar-width: thin;
+  scrollbar-color: var(--negre) var(--blanc);
 }
 
 body {
@@ -91,33 +89,23 @@ body {
   gap: 40px;
 }
 
-[title] {
-  cursor: pointer;
-}
-
 /* Capçalera */
 header.capPagina {
   flex-shrink: 0;
   padding-top: var(--farciment);
-  width: calc(100% - (var(--farciment) * 2));
+  width: calc(100% - 2 * var(--farciment));
   margin: auto;
   font-family: "Semi";
-  font-size: max(var(--midaTipus), 1.526vw);
+  font-size: var(--midaTipus-header);
   letter-spacing: -0.04em;
-  line-height: .7;
+  line-height: var(--altLinia-header);
   display: flex;
   justify-content: space-between;
 }
 
-header.capPagina svg {
+svg.logo {
   width: 60px;
-}
-
-header.capPagina svg path.aorg {
-  fill: var(--negre);
-}
-
-header.capPagina svg path.excl {
+  height: auto;
   fill: var(--roig);
 }
 
@@ -129,35 +117,25 @@ main {
 }
 
 article {
-  width: calc(100% - (var(--farciment) * 6));
+  width: calc(100% - 6 * var(--farciment));
   margin: auto;
   display: flex;
+  flex-direction: row-reverse;
+  gap: 20%;
 }
 
-article header,
-article section {
+article header {
+  flex: 1 0 30%;
+}
+
+div.contingut {
   flex: 1 0 50%;
 }
-
-/*
-article section {
-  position: relative;
-}
-
-article section:before {
-  position: absolute;
-  content: "\00A7";
-  left: -60px;
-  top: -24px;
-  color: var(--roig);
-  font-size: 85px;
-}
-*/
 
 article h1 {
   font-family: "Fina";
   text-transform: lowercase;
-  font-size: 5vw;
+  font-size: var(--midaTipus-article);
   letter-spacing: -0.08em;
   line-height: 0.73em;
   margin-top: -0.07em;
@@ -170,11 +148,11 @@ article p {
 
 p.cita {
   text-align: right;
+  color: var(--roig);
 }
 
 em {
   font-family: "Cursiva";
-  font-style: italic;
   text-transform: lowercase;
 }
 
@@ -190,11 +168,10 @@ footer.peuPagina::after {
   position: absolute;
   bottom: 0;
   content: '';
-  display: block;
   width: 5px;
   height: 45px;
   background-color: var(--roig);
-  margin-left: 50%;
+  left: 50%;
   transform: translateX(-50%);
 }
 
@@ -206,50 +183,35 @@ footer.peuPagina p {
 }
 
 /* La màquina */
-div.embolcallMaquina {
-  height: 100%;
-  display: flex;
-  align-items: center;
-}
-
 svg.maquina {
-  width: 61.8%;
+  margin-top: 2rem;
+  width: 100%;
   fill: var(--roig);
 }
 
-path.s {
-  animation: counter-rotation 100s infinite linear;
-  transform-origin: 100.136px 225.345px
+svg.maquina .p {
+  animation: invers-rellotge 100s infinite linear;
+  transform-origin: 100.136px 225.345px;
 }
 
-path.m {
-  animation: rotation 150s infinite linear;
-  transform-origin: 254.675px 379.447px
+svg.maquina .m {
+  animation: rellotge 150s infinite linear;
+  transform-origin: 254.675px 379.447px;
 }
 
-path.l {
-  animation: counter-rotation 200s infinite linear;
-  transform-origin: 461.37px 173.694px
+svg.maquina .g {
+  animation: invers-rellotge 200s infinite linear;
+  transform-origin: 461.37px 173.694px;
 }
 
-@keyframes rotation {
-  from {
-    transform: rotate(0deg)
-  }
-
-  to {
-    transform: rotate(359deg)
-  }
+@keyframes rellotge {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(359deg); }
 }
 
-@keyframes counter-rotation {
-  from {
-    transform: rotate(359deg)
-  }
-
-  to {
-    transform: rotate(0deg)
-  }
+@keyframes invers-rellotge {
+  from { transform: rotate(359deg); }
+  to { transform: rotate(0deg); }
 }
 
 /* Barra de desplaçament */
@@ -257,26 +219,19 @@ html::-webkit-scrollbar {
   width: 11px;
 }
 
-html {
-  scrollbar-width: thin;
-  scrollbar-color: var(--negre) var(--blanc);
-}
-
 html::-webkit-scrollbar-track {
   background: var(--blanc);
   border-radius: 9px;
-  -webkit-border-radius: 9px;
 }
 
 html::-webkit-scrollbar-thumb {
   background-color: var(--negre);
   border-radius: 6px;
-  -webkit-border-radius: 6px;
   border: 3px solid var(--blanc);
 }
 
-@media only screen and (max-width:734px) {
-
+/* Responsiu */
+@media only screen and (max-width: 734px) {
   body {
     height: auto;
     gap: 8vh;
@@ -293,19 +248,13 @@ html::-webkit-scrollbar-thumb {
     gap: 5vh;
   }
 
-/*
-  article section:before {
-    visibility: hidden;
-  }
-*/
-
   article h1 {
-    font-size: max(36px, 10vw);
+    font-size: var(--midaTipus-article-responsive);
   }
 
-  div.embolcallMaquina {
-    margin-top: 5vh;
-    justify-content: center;
+  svg.maquina {
+    width: 61.8%;
+    margin: 5vh auto 0;
   }
 
   footer.peuPagina {

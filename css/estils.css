@@ -37,8 +37,8 @@
 /* Estils globals */
 :root {
   --blanc: #F5F1EB;
-  --negre: #363637;
-  --roig: #FF5D3C;
+  --negre: #31414B;
+  --color: #E1CD6D;
   --farciment: 30px;
   --midaTipus: 22px;
   --altLinia: 1.4;
@@ -106,7 +106,7 @@ header.capPagina {
 svg.logo {
   width: 60px;
   height: auto;
-  fill: var(--roig);
+  fill: var(--negre);
 }
 
 /* Contingut principal */
@@ -148,7 +148,6 @@ article p {
 
 p.cita {
   text-align: right;
-  color: var(--roig);
 }
 
 em {
@@ -170,7 +169,7 @@ footer.peuPagina::after {
   content: '';
   width: 5px;
   height: 45px;
-  background-color: var(--roig);
+  background-color: var(--color);
   left: 50%;
   transform: translateX(-50%);
 }
@@ -187,7 +186,7 @@ svg.maquina {
   margin-top: 2rem;
   width: 100%;
   max-width: 350px;
-  fill: var(--roig);
+  fill: var(--color);
 }
 
 svg.maquina .p {

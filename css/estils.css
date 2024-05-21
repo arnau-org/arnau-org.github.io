@@ -19,14 +19,6 @@
 }
 
 @font-face {
-  font-family: "Fina";
-  font-style: normal;
-  font-weight: normal;
-  src: url("/tipus/nk-fina.woff2") format("woff2"),
-       url("/tipus/nk-fina.woff") format("woff");
-}
-
-@font-face {
   font-family: "Semi";
   font-style: normal;
   font-weight: normal;
@@ -37,15 +29,11 @@
 /* Estils globals */
 :root {
   --fons: #F5F1EB;
-  --text: #31414B;
-  --color: #E1CD6D;
+  --text: #303031;
+  --color: #c43c20;
   --farciment: 30px;
   --midaTipus: 22px;
   --altLinia: 1.4;
-  --altLinia-header: 0.7;
-  --midaTipus-header: max(22px, 1.526vw);
-  --midaTipus-article: 4.5vw;
-  --midaTipus-article-responsive: max(36px, 10vw);
 }
 
 *,
@@ -96,9 +84,9 @@ header.capPagina {
   width: calc(100% - 2 * var(--farciment));
   margin: auto;
   font-family: "Semi";
-  font-size: var(--midaTipus-header);
+  font-size: max(22px, 1.526vw);
   letter-spacing: -0.04em;
-  line-height: var(--altLinia-header);
+  line-height: .7;
   display: flex;
   justify-content: space-between;
 }
@@ -106,42 +94,33 @@ header.capPagina {
 svg.logo {
   width: 60px;
   height: auto;
-  fill: var(--color);
+  fill: var(--text);
 }
 
 /* Contingut principal */
-main {
+main.cosPagina {
   flex-grow: 1;
   display: flex;
   align-items: center;
 }
 
-article {
+div.contingut {
   width: calc(100% - 6 * var(--farciment));
   margin: auto;
   display: flex;
   flex-direction: row-reverse;
-  gap: 20%;
+  gap: calc(3 * var(--farciment));
 }
 
-article header {
-  flex: 1 0 30%;
+div.figura {
+  flex: 1 0 calc(50% - (3 * var(--farciment)));
 }
 
-div.contingut {
+div.text {
   flex: 1 0 50%;
 }
 
-article h1 {
-  font-family: "Fina";
-  text-transform: lowercase;
-  font-size: var(--midaTipus-article);
-  letter-spacing: -0.08em;
-  line-height: 0.73em;
-  margin-top: -0.07em;
-}
-
-article p {
+p {
   margin-bottom: 1em;
   letter-spacing: -0.05em;
 }
@@ -153,6 +132,18 @@ p.cita {
 em {
   font-family: "Cursiva";
   text-transform: lowercase;
+}
+
+/* El ninot */
+svg.ninot {
+  max-height: 100%;
+  max-width: 350px;
+  fill: var(--text);
+  margin: auto;
+}
+
+svg.ninot .color {
+  fill: var(--color);
 }
 
 /* Peu de pàgina */
@@ -181,39 +172,6 @@ footer.peuPagina p {
   letter-spacing: -0.05em;
 }
 
-/* La màquina */
-svg.maquina {
-  margin-top: 2rem;
-  width: 100%;
-  max-width: 350px;
-  fill: var(--color);
-}
-
-svg.maquina .p {
-  animation: invers-rellotge 100s infinite linear;
-  transform-origin: 100.136px 225.345px;
-}
-
-svg.maquina .m {
-  animation: rellotge 150s infinite linear;
-  transform-origin: 254.675px 379.447px;
-}
-
-svg.maquina .g {
-  animation: invers-rellotge 200s infinite linear;
-  transform-origin: 461.37px 173.694px;
-}
-
-@keyframes rellotge {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(359deg); }
-}
-
-@keyframes invers-rellotge {
-  from { transform: rotate(359deg); }
-  to { transform: rotate(0deg); }
-}
-
 /* Barra de desplaçament */
 html::-webkit-scrollbar {
   width: 11px;
@@ -238,21 +196,17 @@ html::-webkit-scrollbar-thumb {
   }
 
   header.capPagina,
-  article,
+  div.contingut,
   footer.peuPagina {
     width: 92%;
   }
 
-  article {
+  div.contingut {
     flex-direction: column;
     gap: 5vh;
   }
 
-  article h1 {
-    font-size: var(--midaTipus-article-responsive);
-  }
-
-  svg.maquina {
+  svg.ninot {
     width: 61.8%;
     margin: 5vh auto 0;
   }

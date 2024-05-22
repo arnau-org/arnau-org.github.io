@@ -120,6 +120,12 @@ div.text {
   flex: 1 0 50%;
 }
 
+h1 {
+  font-size: 0;
+  position: absolute;
+  left: -9999px;
+}
+
 p {
   margin-bottom: 1em;
   letter-spacing: -0.05em;
@@ -139,7 +145,7 @@ svg.ninot {
   max-height: 100%;
   max-width: 350px;
   fill: var(--text);
-  margin: auto;
+  margin: -.5rem auto 0;
 }
 
 svg.ninot .color {

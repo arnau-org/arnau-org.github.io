@@ -16,7 +16,7 @@ sleep 2
 
 mount -t vfat /dev/sdc1 /mnt
 cd /mnt
-uniso < alpine-extended-3.20.1-x86_64.iso
+uniso < /root/alpine-extended-3.20.1-x86_64.iso
 
 sync
 

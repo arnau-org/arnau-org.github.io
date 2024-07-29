@@ -1,0 +1,24 @@
+#!/bin/sh
+
+#apk add parted xfsprogs xfsprogs-extra
+
+rc-service mpd stop && sleep 2
+umount /var/lib/mpd/music && sleep 2
+
+parted --script /dev/sda mklabel gpt
+parted --script --align=optimal /dev/sda mkpart ESP fat32 1MiB 4GiB%
+parted --script --align=optimal /dev/sda mkpart primary 4GiB 100%
+parted --script /dev/sda set 1 boot on
+
+mkfs.vfat /dev/sda1
+mkfs.xfs /dev/sda2
+
+wget https://dl-cdn.alpinelinux.org/alpine/v3.20/releases/x86_64/alpine-extended-3.20.2-x86_64.iso
+
+mount -t vfat /dev/sda1 /mnt
+cd /mnt
+uniso < /root/alpine-extended-3.20.2-x86_64.iso
+
+sync
+
+cd ~ && umount /mnt

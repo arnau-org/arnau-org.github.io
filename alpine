@@ -5,18 +5,18 @@ apk add parted
 parted --script /dev/sdc mklabel gpt
 parted --script --align=optimal /dev/sdc mkpart ESP fat32 1MiB 100%
 parted --script /dev/sdc set 1 boot on
-
+ 
 sleep 2
 
 mkfs.vfat -n ALPINE /dev/sdc1
 
-wget https://dl-cdn.alpinelinux.org/alpine/v3.20/releases/x86_64/alpine-extended-3.20.1-x86_64.iso
+wget https://dl-cdn.alpinelinux.org/alpine/v3.20/releases/x86_64/alpine-extended-3.20.2-x86_64.iso
 
 sleep 2
 
 mount -t vfat /dev/sdc1 /mnt
 cd /mnt
-uniso < /root/alpine-extended-3.20.1-x86_64.iso
+uniso < /root/alpine-extended-3.20.2-x86_64.iso
 
 sync
 

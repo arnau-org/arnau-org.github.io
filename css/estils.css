@@ -108,7 +108,7 @@ div.contingut {
   width: calc(100% - 6 * var(--farciment));
   margin: auto;
   display: flex;
-  flex-direction: row-reverse;
+  /* flex-direction: row-reverse; */
   gap: calc(3 * var(--farciment));
 }
 

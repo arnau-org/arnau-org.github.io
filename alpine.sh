@@ -22,7 +22,7 @@ sleep 5
 
 mount -t vfat /dev/sda1 /mnt
 cd /mnt
-uniso < /root/alpine-extended-3.20.2-x86_64.iso
+uniso < /root/alpine-extended-3.20.3-x86_64.iso
 
 sleep 5
 

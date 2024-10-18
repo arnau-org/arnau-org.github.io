@@ -1,6 +1,6 @@
 #!/bin/sh
 
-apk add parted xfsprogs
+apk add parted xfsprogs efibootmgr
 
 sleep 5
 

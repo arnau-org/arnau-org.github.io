@@ -31,3 +31,5 @@ sync
 sleep 5
 
 cd ~ && umount /mnt
+
+efibootmgr --create --disk /dev/sda --part 1 --label "Alpine Linux" --loader /efi/boot/bootx64.efi

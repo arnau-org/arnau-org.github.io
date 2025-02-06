@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Instal·la les eines necessàries
-apk add --no-cache parted efibootmgr wget
+apk add --no-cache parted efibootmgr wget e2fsprogs
 
 # Crea la taula de particions i prepara les particions
 parted --script /dev/sda mklabel gpt
@@ -10,7 +10,7 @@ parted --script --align=optimal /dev/sda mkpart primary 4GiB 100%
 parted --script /dev/sda set 1 boot on
 
 # Dona format a la partició d'EFI
-mkfs.vfat /dev/sda1
+mkfs.ext4 -O ^has_journal,^64bit /dev/sda1
 
 # Elimina totes les entrades EFI existents
 echo "Eliminant totes les entrades EFI existents..."
@@ -30,7 +30,7 @@ fi
 # Baixa la imatge ISO
 if wget "$BASE_URL/$ISO_NAME" -O /tmp/alpine-extended.iso; then
   # Munta la partició EFI
-  mount -t vfat /dev/sda1 /mnt
+  mount -t ext4 /dev/sda1 /mnt
 
   # Extreu el contingut de la ISO
   cd /mnt

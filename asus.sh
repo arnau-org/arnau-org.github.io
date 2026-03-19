@@ -13,7 +13,7 @@ parted --script --align=optimal "$DISK" mkpart primary ext4 4GiB 100%
 
 modprobe ext4
 
-mkfs.vfat -F "$ESP"
+mkfs.vfat -F32 "$ESP"
 mkfs.ext4 "$EXT"
 
 wget https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/x86_64/alpine-extended-3.22.0-x86_64.iso

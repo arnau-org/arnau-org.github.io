@@ -3,7 +3,7 @@ set -e
 
 ISO_URL="https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/x86_64/alpine-extended-3.23.4-x86_64.iso"
 
-apk add --no-cache parted dosfstools e2fsprogs efibootmgr uniso wget
+apk add --no-cache parted dosfstools e2fsprogs efibootmgr # uniso wget
 
 parted --script /dev/nvme0n1 mklabel gpt
 parted --script --align=optimal /dev/nvme0n1 mkpart ESP fat32 1MiB 513MiB

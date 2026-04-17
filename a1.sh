@@ -1,14 +1,14 @@
 #!/bin/sh
 set -e
 
-ISO_URL="https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/x86_64/alpine-extended-3.23.3-x86_64.iso"
+ISO_URL="https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/x86_64/alpine-extended-3.23.4-x86_64.iso"
 
 apk add --no-cache parted dosfstools e2fsprogs efibootmgr uniso wget
 
 parted --script /dev/nvme0n1 mklabel gpt
 parted --script --align=optimal /dev/nvme0n1 mkpart ESP fat32 1MiB 513MiB
-parted --script --align=optimal /dev/nvme0n1 mkpart primary ext4 513MiB 4GiB  
-parted --script --align=optimal /dev/nvme0n1 mkpart primary ext4 4GiB 100%
+parted --script --align=optimal /dev/nvme0n1 mkpart primary ext4 513MiB 8GiB  
+parted --script --align=optimal /dev/nvme0n1 mkpart primary ext4 8GiB 100%
 parted --script /dev/nvme0n1 set 1 esp on
 
 modprobe vfat

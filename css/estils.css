@@ -33,9 +33,9 @@
   --text: #303031;
   --color: #c43c20;
   */
-  --fons: #ffffff;
+  --fons: #e6dac4;
   --text: #282418;
-  --color: #d4af37;
+  --color: #b84c30;
   --farciment: 30px;
   --midaTipus: 22px;
   --altLinia: 1.4;
@@ -80,31 +80,6 @@ body {
   display: flex;
   flex-direction: column;
   gap: 40px;
-}
-
-body {
-  background-color: #ffffff;
-  background-image: radial-gradient(circle, rgba(212,175,55,0.2) 0%, transparent 70%);
-  position: relative;
-  overflow: hidden;
-}
-body::before {
-  content: "";
-  position: absolute;
-  top: -10%; right: -10%;
-  width: 340px; height: 340px;
-  border-radius: 9999px;
-  background: rgba(212,175,55,0.16);
-  filter: blur(64px);
-}
-body::after {
-  content: "";
-  position: absolute;
-  bottom: -15%; left: -10%;
-  width: 300px; height: 300px;
-  border-radius: 9999px;
-  background: rgba(212,175,55,0.18);
-  filter: blur(40px);
 }
 
 /* Capçalera */

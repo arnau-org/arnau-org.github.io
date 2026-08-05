@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Apunts sobre NixOS</title>
+<style>
+  @import url('https://cdnjs.cloudflare.com/ajax/libs/ibm-plex/6.4.1/css/ibm-plex-mono.min.css');
+
+  :root{
+    --bg:        #14120f;
+    --surface:   #1c1914;
+    --surface-2: #24201a;
+    --line:      #3a352b;
+    --amber:     #e8a33d;
+    --amber-dim: #a97a2f;
+    --teal:      #6fa8a0;
+    --ink:       #ede6d6;
+    --ink-muted: #9c9282;
+    --red:       #c9634a;
+  }
+
+  *{ box-sizing:border-box; }
+  ::selection{ background:var(--amber); color:var(--bg); }
+
+  html{ scroll-behavior:smooth; }
+
+  body{
+    margin:0;
+    background:var(--bg);
+    background-image:
+      radial-gradient(ellipse 900px 500px at 15% -10%, rgba(232,163,61,0.07), transparent 60%),
+      repeating-linear-gradient(180deg, rgba(255,255,255,0.012) 0px, rgba(255,255,255,0.012) 1px, transparent 1px, transparent 3px);
+    color:var(--ink);
+    font-family:'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace;
+    font-size:15px;
+    line-height:1.6;
+  }
+
+  a{ color:var(--teal); }
+  a:focus-visible, button:focus-visible, summary:focus-visible{
+    outline:2px solid var(--amber);
+    outline-offset:2px;
+  }
+
+  /* ---------- Capçalera tipus terminal ---------- */
+  header.termbar{
+    border-bottom:1px solid var(--line);
+    background:var(--surface);
+    padding:14px 24px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    position:sticky;
+    top:0;
+    z-index:20;
+    backdrop-filter:blur(6px);
+  }
+  .dots{ display:flex; gap:6px; }
+  .dots span{
+    width:10px; height:10px; border-radius:50%;
+    background:var(--line);
+  }
+  .termbar .path{
+    color:var(--ink-muted);
+    font-size:13px;
+    margin-left:6px;
+  }
+  .termbar .path b{ color:var(--amber); font-weight:600; }
+  .cursor{
+    display:inline-block;
+    width:8px; height:16px;
+    background:var(--amber);
+    margin-left:2px;
+    vertical-align:-3px;
+    animation:blink 1.1s steps(1) infinite;
+  }
+  @keyframes blink{ 50%{ opacity:0; } }
+  @media (prefers-reduced-motion: reduce){
+    .cursor{ animation:none; }
+    html{ scroll-behavior:auto; }
+  }
+
+  /* ---------- Layout ---------- */
+  .wrap{
+    max-width:1180px;
+    margin:0 auto;
+    display:grid;
+    grid-template-columns:230px 1fr;
+    gap:0;
+  }
+  @media (max-width:900px){
+    .wrap{ grid-template-columns:1fr; }
+  }
+
+  nav.toc{
+    padding:32px 18px 60px 24px;
+    position:sticky;
+    top:53px;
+    align-self:start;
+    max-height:calc(100vh - 53px);
+    overflow-y:auto;
+  }
+  @media (max-width:900px){
+    nav.toc{ position:static; max-height:none; padding-bottom:0; }
+  }
+  nav.toc .eyebrow{
+    color:var(--amber-dim);
+    font-size:11px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    margin-bottom:14px;
+  }
+  nav.toc ol{
+    list-style:none;
+    margin:0; padding:0;
+    border-left:1px solid var(--line);
+  }
+  nav.toc li{ margin:0; }
+  nav.toc a{
+    display:block;
+    padding:7px 0 7px 16px;
+    color:var(--ink-muted);
+    text-decoration:none;
+    font-size:13.5px;
+    border-left:2px solid transparent;
+    margin-left:-1px;
+    transition:color .15s;
+  }
+  nav.toc a:hover{ color:var(--ink); }
+  nav.toc a .n{ color:var(--amber-dim); margin-right:8px; }
+
+  main{
+    padding:40px 32px 100px;
+    border-left:1px solid var(--line);
+    min-width:0;
+  }
+  @media (max-width:900px){ main{ border-left:none; padding:28px 20px 80px; } }
+
+  .intro h1{
+    font-size:22px;
+    margin:0 0 6px;
+    font-weight:700;
+    letter-spacing:-.01em;
+  }
+  .intro h1 .hash{ color:var(--amber-dim); font-weight:400; }
+  .intro p{
+    color:var(--ink-muted);
+    max-width:60ch;
+    margin:0 0 40px;
+    font-size:13.5px;
+  }
+
+  section{
+    margin-bottom:52px;
+    scroll-margin-top:70px;
+  }
+  section h2{
+    display:flex;
+    align-items:baseline;
+    gap:12px;
+    font-size:12px;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    color:var(--amber);
+    border-bottom:1px solid var(--line);
+    padding-bottom:10px;
+    margin:0 0 20px;
+  }
+  section h2 .num{
+    font-size:11px;
+    color:var(--amber-dim);
+    background:var(--surface-2);
+    border:1px solid var(--line);
+    padding:2px 7px;
+    border-radius:3px;
+  }
+
+  .entry{
+    margin-bottom:22px;
+  }
+  .entry .label{
+    font-size:13px;
+    color:var(--ink);
+    margin-bottom:8px;
+  }
+  .entry .label b{ color:var(--teal); font-weight:600; }
+  .entry .note{
+    color:var(--ink-muted);
+    font-size:12.5px;
+    margin-top:8px;
+    line-height:1.55;
+  }
+  .entry .note code{ color:var(--amber-dim); }
+
+  /* ---------- Blocs de codi ---------- */
+  .code{
+    position:relative;
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-radius:6px;
+    overflow:hidden;
+  }
+  .code pre{
+    margin:0;
+    padding:14px 46px 14px 16px;
+    overflow-x:auto;
+    font-size:13.5px;
+    line-height:1.65;
+    color:var(--ink);
+  }
+  .code .comment{ color:var(--ink-muted); }
+  .code .flag{ color:var(--teal); }
+  .code .str{ color:var(--amber); }
+
+  .copy-btn{
+    position:absolute;
+    top:8px; right:8px;
+    background:var(--surface-2);
+    border:1px solid var(--line);
+    color:var(--ink-muted);
+    font-family:inherit;
+    font-size:10.5px;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    padding:5px 8px;
+    border-radius:4px;
+    cursor:pointer;
+    transition:border-color .15s, color .15s;
+  }
+  .copy-btn:hover{ color:var(--amber); border-color:var(--amber-dim); }
+  .copy-btn.copied{ color:var(--bg); background:var(--amber); border-color:var(--amber); }
+
+  /* ---------- Taula de generations ---------- */
+  table{
+    width:100%;
+    border-collapse:collapse;
+    font-size:13px;
+    margin-top:6px;
+  }
+  th, td{
+    text-align:left;
+    padding:9px 12px;
+    border-bottom:1px solid var(--line);
+  }
+  th{
+    color:var(--amber-dim);
+    font-weight:600;
+    font-size:11px;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+  }
+  td code{ color:var(--teal); }
+  tr:last-child td{ border-bottom:none; }
+
+  /* ---------- Avisos ---------- */
+  .warn{
+    border-left:3px solid var(--red);
+    background:linear-gradient(90deg, rgba(201,99,74,0.10), transparent);
+    padding:10px 14px;
+    font-size:12.5px;
+    color:var(--ink);
+    border-radius:0 4px 4px 0;
+    margin-top:10px;
+  }
+  .warn b{ color:var(--red); }
+
+  footer{
+    max-width:1180px;
+    margin:0 auto;
+    padding:26px 32px 50px;
+    color:var(--ink-muted);
+    font-size:11.5px;
+    border-top:1px solid var(--line);
+  }
+</style>
+</head>
+<body>
+
+<header class="termbar">
+  <div class="dots"><span></span><span></span><span></span></div>
+  <span class="path"><b>antoni</b>@nixos<span class="cursor"></span></span>
+</header>
+
+<div class="wrap">
+
+  <nav class="toc" aria-label="Índex">
+    <div class="eyebrow">Seccions</div>
+    <ol>
+      <li><a href="#rebuild"><span class="n">01</span>Rebuild</a></li>
+      <li><a href="#actualitzar"><span class="n">02</span>Actualitzar</a></li>
+      <li><a href="#generations"><span class="n">03</span>Generations</a></li>
+      <li><a href="#depurar"><span class="n">04</span>Depurar</a></li>
+      <li><a href="#rescat"><span class="n">05</span>TTY de rescat</a></li>
+      <li><a href="#neteja"><span class="n">06</span>Neteja del sistema</a></li>
+      <li><a href="#caelestia"><span class="n">07</span>Caelestia</a></li>
+      <li><a href="#wireguard"><span class="n">08</span>WireGuard</a></li>
+    </ol>
+  </nav>
+
+  <main>
+    <div class="intro">
+      <h1><span class="hash">$</span> man nixos</h1>
+      <p>Comandes repetitives per treballar amb NixOS: aplicar canvis, actualitzar el flake, gestionar generations i diagnosticar quan alguna cosa falla.</p>
+    </div>
+
+    <!-- 01 REBUILD -->
+    <section id="rebuild">
+      <h2><span class="num">01</span>Rebuild</h2>
+
+      <div class="entry">
+        <div class="label">Aplicar canvis del <b>configuration.nix</b>/<b>home.nix</b> ara mateix i a l'arrencada</div>
+        <div class="code">
+<pre>sudo nixos-rebuild switch --flake /etc/nixos</pre>
+          <button class="copy-btn" data-copy="sudo nixos-rebuild switch --flake /etc/nixos">copia</button>
+        </div>
+        <div class="note">Amb una sola <code>nixosConfigurations</code> al flake no cal indicar el nom després de <code>#</code>.</div>
+      </div>
+
+      <div class="entry">
+        <div class="label">Aplicar només al <b>proper</b> arrencada, sense tocar la sessió activa</div>
+        <div class="code">
+<pre>sudo nixos-rebuild boot --flake /etc/nixos</pre>
+          <button class="copy-btn" data-copy="sudo nixos-rebuild boot --flake /etc/nixos">copia</button>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="label">Provar sense crear una generation nova (es perd al reiniciar)</div>
+        <div class="code">
+<pre>sudo nixos-rebuild test --flake /etc/nixos</pre>
+          <button class="copy-btn" data-copy="sudo nixos-rebuild test --flake /etc/nixos">copia</button>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="label">Tornar enrere immediatament si un rebuild ha deixat el sistema pitjor</div>
+        <div class="code">
+<pre>sudo nixos-rebuild switch --rollback</pre>
+          <button class="copy-btn" data-copy="sudo nixos-rebuild switch --rollback">copia</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 02 ACTUALITZAR -->
+    <section id="actualitzar">
+      <h2><span class="num">02</span>Actualitzar</h2>
+
+      <div class="entry">
+        <div class="label">Flux complet: fixar noves versions i aplicar-les</div>
+        <div class="code">
+<pre>cd /etc/nixos
+sudo nix flake update                              <span class="comment"># 1. actualitza flake.lock</span>
+git diff flake.lock                                <span class="comment"># 2. (opcional) revisa què canvia</span>
+sudo nixos-rebuild switch --flake /etc/nixos       <span class="comment"># 3. aplica</span></pre>
+          <button class="copy-btn" data-copy="cd /etc/nixos
+sudo nix flake update
+git diff flake.lock
+sudo nixos-rebuild switch --flake /etc/nixos">copia</button>
+        </div>
+        <div class="note"><code>nixos-rebuild switch</code> sol NO actualitza res — sempre fa servir les versions ja fixades al <code>flake.lock</code>.</div>
+      </div>
+
+      <div class="entry">
+        <div class="label">Actualitzar només un input concret (per exemple, <b>caelestia-shell</b>)</div>
+        <div class="code">
+<pre>sudo nix flake lock --update-input caelestia-shell</pre>
+          <button class="copy-btn" data-copy="sudo nix flake lock --update-input caelestia-shell">copia</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 03 GENERATIONS -->
+    <section id="generations">
+      <h2><span class="num">03</span>Generations</h2>
+
+      <table>
+        <thead>
+          <tr><th>Vull...</th><th>Comanda</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Llistar-les totes</td><td><code>sudo nix-env --list-generations -p /nix/var/nix/profiles/system</code></td></tr>
+          <tr><td>Esborrar &gt;14 dies</td><td><code>sudo nix-collect-garbage --delete-older-than 14d</code></td></tr>
+          <tr><td>Esborrar totes menys l'activa</td><td><code>sudo nix-collect-garbage -d</code></td></tr>
+          <tr><td>Esborrar-ne una en concret (núm. 3)</td><td><code>sudo nix-env -p /nix/var/nix/profiles/system --delete-generations 3</code></td></tr>
+          <tr><td>Regenerar el menú de boot</td><td><code>sudo /run/current-system/bin/switch-to-configuration boot</code></td></tr>
+        </tbody>
+      </table>
+      <div class="warn"><b>Compte:</b> esborrar generations elimina la possibilitat de fer rollback a elles. No ho facis just després d'un rebuild dubtós.</div>
+    </section>
+
+    <!-- 04 DEPURAR -->
+    <section id="depurar">
+      <h2><span class="num">04</span>Depurar</h2>
+
+      <div class="entry">
+        <div class="label">Traça completa quan un error d'evaluació és massa curt</div>
+        <div class="code">
+<pre>sudo nixos-rebuild switch --flake /etc/nixos <span class="flag">--show-trace</span></pre>
+          <button class="copy-btn" data-copy="sudo nixos-rebuild switch --flake /etc/nixos --show-trace">copia</button>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="label">Veure quins paquets/outputs exposa un flake abans de fer-lo servir</div>
+        <div class="code">
+<pre>nix flake show github:usuari/repositori</pre>
+          <button class="copy-btn" data-copy="nix flake show github:usuari/repositori">copia</button>
+        </div>
+        <div class="note">Útil per confirmar si un mòdul és <code>homeModules</code> o <code>homeManagerModules</code> abans d'endevinar-ho.</div>
+      </div>
+
+      <div class="entry">
+        <div class="label">Logs d'un servei que no arrenca (greetd, pipewire, NetworkManager...)</div>
+        <div class="code">
+<pre>journalctl -xe
+journalctl -u nom-del-servei -b</pre>
+          <button class="copy-btn" data-copy="journalctl -xe
+journalctl -u nom-del-servei -b">copia</button>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="label">Recarregar Hyprland sense reiniciar sessió, després d'editar <b>hyprland.lua</b></div>
+        <div class="code">
+<pre>hyprctl reload</pre>
+          <button class="copy-btn" data-copy="hyprctl reload">copia</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 05 TTY RESCAT -->
+    <section id="rescat">
+      <h2><span class="num">05</span>TTY de rescat</h2>
+      <p class="note" style="margin-bottom:16px;">Per quan Hyprland es queda penjat i no hi ha manera d'obrir cap terminal.</p>
+
+      <div class="entry">
+        <div class="label">1. Sortir a una consola de text</div>
+        <div class="code">
+<pre>Ctrl + Alt + F2</pre>
+        </div>
+        <div class="note">Si F2 no respon, prova F3–F6.</div>
+      </div>
+
+      <div class="entry">
+        <div class="label">2. Iniciar sessió amb usuari/contrasenya normal, i matar Hyprland</div>
+        <div class="code">
+<pre>pkill Hyprland
+<span class="comment"># si no respon:</span>
+pkill -9 Hyprland</pre>
+          <button class="copy-btn" data-copy="pkill Hyprland">copia</button>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="label">3. Tornar a la sessió gràfica un cop arreglat</div>
+        <div class="code">
+<pre>Ctrl + Alt + F1</pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- 06 NETEJA -->
+    <section id="neteja">
+      <h2><span class="num">06</span>Neteja del sistema</h2>
+
+      <div class="entry">
+        <div class="label">Neteja completa: garbage collect + optimitzar el store</div>
+        <div class="code">
+<pre>sudo nix-collect-garbage --delete-older-than 14d
+sudo nix-store --optimise</pre>
+          <button class="copy-btn" data-copy="sudo nix-collect-garbage --delete-older-than 14d
+sudo nix-store --optimise">copia</button>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="label">Veure quant espai alliberaries abans de confirmar res</div>
+        <div class="code">
+<pre>nix-store --gc --print-dead</pre>
+          <button class="copy-btn" data-copy="nix-store --gc --print-dead">copia</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 07 CAELESTIA -->
+    <section id="caelestia">
+      <h2><span class="num">07</span>Caelestia</h2>
+
+      <div class="entry">
+        <div class="label">Arrencar el shell manualment (ja hauria de fer-ho sol via <b>hyprland.lua</b>)</div>
+        <div class="code">
+<pre>caelestia shell -d</pre>
+          <button class="copy-btn" data-copy="caelestia shell -d">copia</button>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="label">Netejar notificacions acumulades si el shell va lent en carregar</div>
+        <div class="code">
+<pre>caelestia shell notifs clear</pre>
+          <button class="copy-btn" data-copy="caelestia shell notifs clear">copia</button>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="label">On van les personalitzacions (només amb <b>caelestia-shell</b> sol, sense els dots complets)</div>
+        <div class="code">
+<pre>mkdir -p ~/.config/caelestia
+nano ~/.config/caelestia/shell.json</pre>
+          <button class="copy-btn" data-copy="mkdir -p ~/.config/caelestia
+nano ~/.config/caelestia/shell.json">copia</button>
+        </div>
+        <table>
+          <thead><tr><th>Fitxer</th><th>Conté</th></tr></thead>
+          <tbody>
+            <tr><td><code>~/.config/hypr/hyprland.lua</code></td><td>Config completa de Hyprland — és teva, no la toca el shell</td></tr>
+            <tr><td><code>~/.config/caelestia/shell.json</code></td><td>VPN, mòduls del dashboard, providers</td></tr>
+          </tbody>
+        </table>
+        <div class="warn"><b>Important:</b> aquest <code>shell.json</code> NO es crea per defecte — cal crear-lo tu manualment. Sense ell, el shell simplement fa servir tots els valors per defecte (per això el directori <code>~/.config/caelestia/</code> pot no existir fins que en creïs un).</div>
+      </div>
+    </section>
+
+    <!-- 08 WIREGUARD -->
+    <section id="wireguard">
+      <h2><span class="num">08</span>WireGuard</h2>
+
+      <div class="entry">
+        <div class="label">Connectar / desconnectar manualment (sense NetworkManager)</div>
+        <div class="code">
+<pre>sudo wg-quick up wg0
+sudo wg-quick down wg0</pre>
+          <button class="copy-btn" data-copy="sudo wg-quick up wg0
+sudo wg-quick down wg0">copia</button>
+        </div>
+        <div class="warn">No facis <code>systemctl enable wg-quick@wg0</code> — això el deixaria actiu permanentment a l'arrencada.</div>
+      </div>
+
+      <div class="entry">
+        <div class="label">Veure l'estat de la connexió</div>
+        <div class="code">
+<pre>sudo wg show</pre>
+          <button class="copy-btn" data-copy="sudo wg show">copia</button>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="label">Alternativa amb NetworkManager (toggle des de nmtui/GUI, i necessari pel toggle de Caelestia)</div>
+        <div class="code">
+<pre>sudo nmcli connection import type wireguard file /etc/wireguard/wg0.conf
+sudo nmcli connection modify wg0-client connection.autoconnect no
+nmcli connection up wg0-client
+nmcli connection down wg0-client</pre>
+          <button class="copy-btn" data-copy="sudo nmcli connection import type wireguard file /etc/wireguard/wg0.conf
+sudo nmcli connection modify wg0-client connection.autoconnect no
+nmcli connection up wg0-client
+nmcli connection down wg0-client">copia</button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<footer>
+  <!--
+  nixos-xuleta · ús personal · última edició manual — actualitza-la quan canviïn les convencions del teu flake
+  -->
+</footer>
+
+<script>
+  document.querySelectorAll('.copy-btn').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var text = btn.getAttribute('data-copy');
+      navigator.clipboard.writeText(text).then(function(){
+        btn.textContent = 'copiat!';
+        btn.classList.add('copied');
+        setTimeout(function(){
+          btn.textContent = 'copia';
+          btn.classList.remove('copied');
+        }, 1400);
+      });
+    });
+  });
+</script>
+
+</body>
+</html>

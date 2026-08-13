@@ -1,0 +1,21 @@
+{
+  description = "Configuració NixOS amb Singularity Desktop";
+
+  inputs = {
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    singularity-flake.url = "github:sinty-io/singularity-flake";
+  };
+
+  outputs = { self, nixpkgs, singularity-flake, ... }@inputs: {
+    nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+      specialArgs = { inherit inputs; };
+      modules = [
+        # Important: importa el mòdul de Singularity
+        singularity-flake.nixosModule
+        # Importa la teva configuració actual
+        ./configuration.nix
+      ];
+    };
+  };
+}

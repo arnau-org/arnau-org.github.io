@@ -1,27 +1,29 @@
-# Configuració inicial NixOS
-
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, inputs, ... }:
 
 {
-  imports = [ ./hardware-configuration.nix ];
+  imports = [
+    ./hardware-configuration.nix
+    ./brave.nix
+    ./desktop.nix
+    ./fonts.nix
+  ];
 
-  # Nix (per habilitar flakes després)
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
-  nixpkgs.config.allowUnfree = true;
+  # Arrencada
 
-  # Boot
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   # Xarxa
-  networking.hostName = "nixos";
+
+  networking.hostName = "argos";
   networking.networkmanager.enable = true;
 
-  # Localització
+  # Zona horària i locale
+
   time.timeZone = "Europe/Madrid";
   i18n.defaultLocale = "ca_ES.UTF-8";
-    i18n.extraLocaleSettings = {
+
+  i18n.extraLocaleSettings = {
     LC_ADDRESS = "ca_ES.UTF-8";
     LC_IDENTIFICATION = "ca_ES.UTF-8";
     LC_MEASUREMENT = "ca_ES.UTF-8";
@@ -32,6 +34,20 @@
     LC_TELEPHONE = "ca_ES.UTF-8";
     LC_TIME = "ca_ES.UTF-8";
   };
+
+  # Nix
+
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nixpkgs.config.allowUnfree = true;
+
+  # Configure keymap in X11
+  services.xserver.xkb = {
+    layout = "es";
+    variant = "cat";
+  };
+
+  # Configure console keymap
   console.keyMap = "es";
 
   # Àudio
@@ -43,11 +59,57 @@
     pulse.enable = true;
   };
 
+  # Acceleració de vídeo (Intel HD 530 - Skylake)
+  hardware.graphics = {
+    enable = true;
+    extraPackages = with pkgs; [
+      intel-media-driver
+    ];
+  };
+
+  # Hyprland
+
+  # UWSM desactivat per evitar problemes coneguts amb SDDM a la 26.05.
+  # Si vols fer servir UWSM per iniciar Hyprland manualment des del TTY,
+  # posa `withUWSM = true;` i inicia la sessió amb:
+  #   uwsm start hyprland-uwsm.desktop
+  programs.hyprland = {
+    enable = true;
+    withUWSM = false;
+  };
+
+  # Manteniment del disc (SSD)
+
+  services.fstrim.enable = true;
+
+  # Swap comprimida en RAM — marge barat amb només 12 GB
+
+  zramSwap.enable = true;
+
+  # Home Manager
+
+  home-manager = {
+    extraSpecialArgs = { inherit inputs; };
+    sharedModules = [
+      inputs.caelestia-shell.homeModules.default
+    ];
+    users = {
+      antoni = import ./home.nix;
+    };
+  };
+
   # Usuari
+
   users.users.antoni = {
     isNormalUser = true;
-    initialPassword = "antoni";
-    extraGroups = [ "wheel" "networkmanager" "video" ];
+    description = "Antoni";
+    extraGroups = [
+      "wheel"
+      "networkmanager"
+      "video"
+      "input"
+      "audio"
+    ];
   };
 
   security.sudo.extraRules = [
@@ -62,15 +124,30 @@
     }
   ];
 
-  # Eines bàsiques
+  # Paquets del sistema
+
   environment.systemPackages = with pkgs; [
-    git
-    vim
-    wget
     curl
+    git
+    wget
+    wireguard-tools
   ];
 
-  services.openssh.enable = true;
+  # Neteja automàtica de l'store
 
-  system.stateVersion = "26.05"; # NO tocar mai
+  nix.settings.auto-optimise-store = true;
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 7d";
+  };
+
+  # Serveis a habilitar
+
+  services.openssh.enable = true;
+  services.gvfs.enable = true;
+
+  # Versió d'estat
+
+  system.stateVersion = "26.05";
 }

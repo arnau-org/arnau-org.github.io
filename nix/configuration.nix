@@ -67,9 +67,12 @@
     ];
   };
 
+  # Arrencada en mode CLI
+  systemd.defaultUnit = "multi-user.target";
+
   # Hyprland
 
-  # UWSM desactivat per evitar problemes coneguts amb SDDM a la 26.05.
+  # UWSM desactivat per evitar problemes coneguts amb SDDM a la 26.11.
   # Si vols fer servir UWSM per iniciar Hyprland manualment des del TTY,
   # posa `withUWSM = true;` i inicia la sessió amb:
   #   uwsm start hyprland-uwsm.desktop
@@ -90,9 +93,6 @@
 
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
-    sharedModules = [
-      inputs.caelestia-shell.homeModules.default
-    ];
     users = {
       antoni = import ./home.nix;
     };
@@ -103,6 +103,7 @@
   users.users.antoni = {
     isNormalUser = true;
     description = "Antoni";
+    shell = pkgs.fish;
     extraGroups = [
       "wheel"
       "networkmanager"
@@ -149,5 +150,5 @@
 
   # Versió d'estat
 
-  system.stateVersion = "26.05";
+  system.stateVersion = "26.11";
 }

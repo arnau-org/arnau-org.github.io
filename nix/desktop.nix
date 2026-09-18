@@ -1,14 +1,6 @@
 { config, lib, pkgs, ... }:
 
 {
-  # Gestor de pantalla (SDDM en Wayland, sense Xorg)
-
-  services.displayManager.sddm = {
-    enable = true;
-    wayland.enable = true;
-  };
-
-  services.displayManager.defaultSession = "hyprland";
 
   # Polkit (necessari per a diàlegs d'autenticació gràfics: muntar USB,
   # gestionar xarxa des de la GUI, etc.)
@@ -21,7 +13,9 @@
     enable = true;
     extraPortals = with pkgs; [
       xdg-desktop-portal-hyprland
+      xdg-desktop-portal-gtk 
     ];
+    config.common.default = "*";
   };
 
   # dconf (necessari perquè el dconf.settings d'Home Manager, p. ex. el

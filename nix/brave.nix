@@ -27,8 +27,7 @@
 
       DnsOverHttpsMode            = "secure";
 
-      BraveShieldsTrackersBlocked = true;
-      BraveShieldsHttpsEverywhere = true;
+      BraveShieldsEnabledForUrls  = [ "*" ];
 
       TorDisabled                 = true;
     };

@@ -25,7 +25,7 @@
           inputs.home-manager.nixosModules.default
           {
             home-manager.sharedModules = [
-              inputs.caelestia-shell.homeModules.default
+              inputs.caelestia-shell.homeManagerModules.default
             ];
           }
         ];
